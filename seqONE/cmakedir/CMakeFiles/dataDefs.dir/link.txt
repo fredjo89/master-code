@@ -1,0 +1,2 @@
+/usr/bin/ar cr libdataDefs.a  CMakeFiles/dataDefs.dir/data_defs.cpp.o
+/usr/bin/ranlib libdataDefs.a

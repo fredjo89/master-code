@@ -1,0 +1,6 @@
+/home/shomeb/f/fredjoha/Desktop/master-coding/seqONE/cmakedir/CMakeFiles/TT.dir
+/home/shomeb/f/fredjoha/Desktop/master-coding/seqONE/cmakedir/CMakeFiles/dataDefs.dir
+/home/shomeb/f/fredjoha/Desktop/master-coding/seqONE/cmakedir/CMakeFiles/main.dir
+/home/shomeb/f/fredjoha/Desktop/master-coding/seqONE/cmakedir/CMakeFiles/omp.dir
+/home/shomeb/f/fredjoha/Desktop/master-coding/seqONE/cmakedir/CMakeFiles/read.dir
+/home/shomeb/f/fredjoha/Desktop/master-coding/seqONE/cmakedir/CMakeFiles/utils.dir
