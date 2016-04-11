@@ -1,7 +1,6 @@
 #pragma once
 #include "data_defs.h"
 #include <iostream>
-#include <map>
 using namespace std;
 
 class TypeTwo{
@@ -12,8 +11,8 @@ public:
   int* aIndex;          // Length: twoN
   int* twoN;            // Length: twoN
   double* sum;          // Length: twoN
-  
-  int addL;             // length of address;
+
+  int addL;             // length of valAddress and upAddress
   int sumL;            // length of twoN, sum and aIndex;
 
   TypeTwo(){valAddress=NULL; upAddress=NULL; aIndex=NULL; twoN = NULL;

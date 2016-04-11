@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/shomeb/f/fredjoha/Desktop/master-coding/seqONE/data_defs.h
+/home/shomeb/f/fredjoha/Desktop/master-code/seqONE/data_defs.h
 iostream
 -
 vector
@@ -14,13 +14,13 @@ vector
 map
 -
 
-/home/shomeb/f/fredjoha/Desktop/master-coding/seqONE/readFromFile.cpp
+/home/shomeb/f/fredjoha/Desktop/master-code/seqONE/readFromFile.cpp
 readFromFile.h
-/home/shomeb/f/fredjoha/Desktop/master-coding/seqONE/readFromFile.h
+/home/shomeb/f/fredjoha/Desktop/master-code/seqONE/readFromFile.h
 
-/home/shomeb/f/fredjoha/Desktop/master-coding/seqONE/readFromFile.h
+/home/shomeb/f/fredjoha/Desktop/master-code/seqONE/readFromFile.h
 data_defs.h
-/home/shomeb/f/fredjoha/Desktop/master-coding/seqONE/data_defs.h
+/home/shomeb/f/fredjoha/Desktop/master-code/seqONE/data_defs.h
 iostream
 -
 fstream

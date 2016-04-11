@@ -4,7 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/shomeb/f/fredjoha/Desktop/master-coding/seqONE/TypeTwo.cpp" "/home/shomeb/f/fredjoha/Desktop/master-coding/seqONE/cmakedir/CMakeFiles/TT.dir/TypeTwo.cpp.o"
+  "/home/shomeb/f/fredjoha/Desktop/master-code/seqONE/TypeTwo.cpp" "/home/shomeb/f/fredjoha/Desktop/master-code/seqONE/cmakedir/CMakeFiles/TT.dir/TypeTwo.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

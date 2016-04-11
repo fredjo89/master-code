@@ -1,0 +1,2 @@
+/usr/bin/ar cr libread.a  CMakeFiles/read.dir/readFromFile.cpp.o
+/usr/bin/ranlib libread.a

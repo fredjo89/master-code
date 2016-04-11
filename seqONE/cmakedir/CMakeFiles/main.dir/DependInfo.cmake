@@ -4,7 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/shomeb/f/fredjoha/Desktop/master-coding/seqONE/main.cpp" "/home/shomeb/f/fredjoha/Desktop/master-coding/seqONE/cmakedir/CMakeFiles/main.dir/main.cpp.o"
+  "/home/shomeb/f/fredjoha/Desktop/master-code/seqONE/main.cpp" "/home/shomeb/f/fredjoha/Desktop/master-code/seqONE/cmakedir/CMakeFiles/main.dir/main.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -15,11 +15,11 @@ SET(CMAKE_TARGET_DEFINITIONS
 
 # Targets to which this target links.
 SET(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/shomeb/f/fredjoha/Desktop/master-coding/seqONE/cmakedir/CMakeFiles/read.dir/DependInfo.cmake"
-  "/home/shomeb/f/fredjoha/Desktop/master-coding/seqONE/cmakedir/CMakeFiles/dataDefs.dir/DependInfo.cmake"
-  "/home/shomeb/f/fredjoha/Desktop/master-coding/seqONE/cmakedir/CMakeFiles/omp.dir/DependInfo.cmake"
-  "/home/shomeb/f/fredjoha/Desktop/master-coding/seqONE/cmakedir/CMakeFiles/utils.dir/DependInfo.cmake"
-  "/home/shomeb/f/fredjoha/Desktop/master-coding/seqONE/cmakedir/CMakeFiles/TT.dir/DependInfo.cmake"
+  "/home/shomeb/f/fredjoha/Desktop/master-code/seqONE/cmakedir/CMakeFiles/read.dir/DependInfo.cmake"
+  "/home/shomeb/f/fredjoha/Desktop/master-code/seqONE/cmakedir/CMakeFiles/dataDefs.dir/DependInfo.cmake"
+  "/home/shomeb/f/fredjoha/Desktop/master-code/seqONE/cmakedir/CMakeFiles/omp.dir/DependInfo.cmake"
+  "/home/shomeb/f/fredjoha/Desktop/master-code/seqONE/cmakedir/CMakeFiles/utils.dir/DependInfo.cmake"
+  "/home/shomeb/f/fredjoha/Desktop/master-code/seqONE/cmakedir/CMakeFiles/TT.dir/DependInfo.cmake"
   )
 
 # The include file search paths:

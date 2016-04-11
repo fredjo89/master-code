@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/shomeb/f/fredjoha/Desktop/master-coding/seqONE_timing/utilities.cpp
+utilities.h
+/home/shomeb/f/fredjoha/Desktop/master-coding/seqONE_timing/utilities.h
+
+/home/shomeb/f/fredjoha/Desktop/master-coding/seqONE_timing/utilities.h
+

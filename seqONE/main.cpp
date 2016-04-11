@@ -23,7 +23,7 @@
 using namespace std;
 
 int RANK, SIZE, TAG = 100;
-const string infile = "/home/shomeb/f/fredjoha/Desktop/master-coding/MRST/mrst-core/examples/data/tmp/basis_custom/input/";
+const string infile = "/home/shomeb/f/fredjoha/Desktop/master-code/MRST/mrst-core/examples/data/tmp/basis_custom/input/";
 
 
 
@@ -50,7 +50,7 @@ int main(int argc, char* argv[])
 
 	/* *************************get OMP solution******************************* */
 	Options opt;
-	opt.maxIter = 1;
+	opt.maxIter = 99;
 	opt.tolerance = -1;
 	double* ompSolution = new double[grid.n_basis];
 	for (int i =0; i<grid.n_basis; i++){ ompSolution[i] = globalBasis[i]; }

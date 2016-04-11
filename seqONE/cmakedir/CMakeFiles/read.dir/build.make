@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/shomeb/f/fredjoha/Desktop/master-coding/seqONE
+CMAKE_SOURCE_DIR = /home/shomeb/f/fredjoha/Desktop/master-code/seqONE
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/shomeb/f/fredjoha/Desktop/master-coding/seqONE/cmakedir
+CMAKE_BINARY_DIR = /home/shomeb/f/fredjoha/Desktop/master-code/seqONE/cmakedir
 
 # Include any dependencies generated for this target.
 include CMakeFiles/read.dir/depend.make
@@ -51,17 +51,17 @@ include CMakeFiles/read.dir/flags.make
 
 CMakeFiles/read.dir/readFromFile.cpp.o: CMakeFiles/read.dir/flags.make
 CMakeFiles/read.dir/readFromFile.cpp.o: ../readFromFile.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/shomeb/f/fredjoha/Desktop/master-coding/seqONE/cmakedir/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/shomeb/f/fredjoha/Desktop/master-code/seqONE/cmakedir/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/read.dir/readFromFile.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/read.dir/readFromFile.cpp.o -c /home/shomeb/f/fredjoha/Desktop/master-coding/seqONE/readFromFile.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/read.dir/readFromFile.cpp.o -c /home/shomeb/f/fredjoha/Desktop/master-code/seqONE/readFromFile.cpp
 
 CMakeFiles/read.dir/readFromFile.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/read.dir/readFromFile.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/shomeb/f/fredjoha/Desktop/master-coding/seqONE/readFromFile.cpp > CMakeFiles/read.dir/readFromFile.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/shomeb/f/fredjoha/Desktop/master-code/seqONE/readFromFile.cpp > CMakeFiles/read.dir/readFromFile.cpp.i
 
 CMakeFiles/read.dir/readFromFile.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/read.dir/readFromFile.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/shomeb/f/fredjoha/Desktop/master-coding/seqONE/readFromFile.cpp -o CMakeFiles/read.dir/readFromFile.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/shomeb/f/fredjoha/Desktop/master-code/seqONE/readFromFile.cpp -o CMakeFiles/read.dir/readFromFile.cpp.s
 
 CMakeFiles/read.dir/readFromFile.cpp.o.requires:
 .PHONY : CMakeFiles/read.dir/readFromFile.cpp.o.requires
@@ -98,6 +98,6 @@ CMakeFiles/read.dir/clean:
 .PHONY : CMakeFiles/read.dir/clean
 
 CMakeFiles/read.dir/depend:
-	cd /home/shomeb/f/fredjoha/Desktop/master-coding/seqONE/cmakedir && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/shomeb/f/fredjoha/Desktop/master-coding/seqONE /home/shomeb/f/fredjoha/Desktop/master-coding/seqONE /home/shomeb/f/fredjoha/Desktop/master-coding/seqONE/cmakedir /home/shomeb/f/fredjoha/Desktop/master-coding/seqONE/cmakedir /home/shomeb/f/fredjoha/Desktop/master-coding/seqONE/cmakedir/CMakeFiles/read.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/shomeb/f/fredjoha/Desktop/master-code/seqONE/cmakedir && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/shomeb/f/fredjoha/Desktop/master-code/seqONE /home/shomeb/f/fredjoha/Desktop/master-code/seqONE /home/shomeb/f/fredjoha/Desktop/master-code/seqONE/cmakedir /home/shomeb/f/fredjoha/Desktop/master-code/seqONE/cmakedir /home/shomeb/f/fredjoha/Desktop/master-code/seqONE/cmakedir/CMakeFiles/read.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/read.dir/depend
 
