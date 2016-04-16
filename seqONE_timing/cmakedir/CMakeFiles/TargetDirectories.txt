@@ -1,6 +1,6 @@
-/home/shomeb/f/fredjoha/Desktop/master-coding/seqONE_timing/cmakedir/CMakeFiles/TT.dir
-/home/shomeb/f/fredjoha/Desktop/master-coding/seqONE_timing/cmakedir/CMakeFiles/dataDefs.dir
-/home/shomeb/f/fredjoha/Desktop/master-coding/seqONE_timing/cmakedir/CMakeFiles/main.dir
-/home/shomeb/f/fredjoha/Desktop/master-coding/seqONE_timing/cmakedir/CMakeFiles/omp.dir
-/home/shomeb/f/fredjoha/Desktop/master-coding/seqONE_timing/cmakedir/CMakeFiles/read.dir
-/home/shomeb/f/fredjoha/Desktop/master-coding/seqONE_timing/cmakedir/CMakeFiles/utils.dir
+/home/shomeb/f/fredjoha/Desktop/master-code/seqONE_timing/cmakedir/CMakeFiles/TT.dir
+/home/shomeb/f/fredjoha/Desktop/master-code/seqONE_timing/cmakedir/CMakeFiles/dataDefs.dir
+/home/shomeb/f/fredjoha/Desktop/master-code/seqONE_timing/cmakedir/CMakeFiles/main.dir
+/home/shomeb/f/fredjoha/Desktop/master-code/seqONE_timing/cmakedir/CMakeFiles/omp.dir
+/home/shomeb/f/fredjoha/Desktop/master-code/seqONE_timing/cmakedir/CMakeFiles/read.dir
+/home/shomeb/f/fredjoha/Desktop/master-code/seqONE_timing/cmakedir/CMakeFiles/utils.dir

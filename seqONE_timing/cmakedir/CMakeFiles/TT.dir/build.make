@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/shomeb/f/fredjoha/Desktop/master-coding/seqONE_timing
+CMAKE_SOURCE_DIR = /home/shomeb/f/fredjoha/Desktop/master-code/seqONE_timing
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/shomeb/f/fredjoha/Desktop/master-coding/seqONE_timing/cmakedir
+CMAKE_BINARY_DIR = /home/shomeb/f/fredjoha/Desktop/master-code/seqONE_timing/cmakedir
 
 # Include any dependencies generated for this target.
 include CMakeFiles/TT.dir/depend.make
@@ -51,17 +51,17 @@ include CMakeFiles/TT.dir/flags.make
 
 CMakeFiles/TT.dir/TypeTwo.cpp.o: CMakeFiles/TT.dir/flags.make
 CMakeFiles/TT.dir/TypeTwo.cpp.o: ../TypeTwo.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/shomeb/f/fredjoha/Desktop/master-coding/seqONE_timing/cmakedir/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/shomeb/f/fredjoha/Desktop/master-code/seqONE_timing/cmakedir/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/TT.dir/TypeTwo.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/TT.dir/TypeTwo.cpp.o -c /home/shomeb/f/fredjoha/Desktop/master-coding/seqONE_timing/TypeTwo.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/TT.dir/TypeTwo.cpp.o -c /home/shomeb/f/fredjoha/Desktop/master-code/seqONE_timing/TypeTwo.cpp
 
 CMakeFiles/TT.dir/TypeTwo.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TT.dir/TypeTwo.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/shomeb/f/fredjoha/Desktop/master-coding/seqONE_timing/TypeTwo.cpp > CMakeFiles/TT.dir/TypeTwo.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/shomeb/f/fredjoha/Desktop/master-code/seqONE_timing/TypeTwo.cpp > CMakeFiles/TT.dir/TypeTwo.cpp.i
 
 CMakeFiles/TT.dir/TypeTwo.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TT.dir/TypeTwo.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/shomeb/f/fredjoha/Desktop/master-coding/seqONE_timing/TypeTwo.cpp -o CMakeFiles/TT.dir/TypeTwo.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/shomeb/f/fredjoha/Desktop/master-code/seqONE_timing/TypeTwo.cpp -o CMakeFiles/TT.dir/TypeTwo.cpp.s
 
 CMakeFiles/TT.dir/TypeTwo.cpp.o.requires:
 .PHONY : CMakeFiles/TT.dir/TypeTwo.cpp.o.requires
@@ -98,6 +98,6 @@ CMakeFiles/TT.dir/clean:
 .PHONY : CMakeFiles/TT.dir/clean
 
 CMakeFiles/TT.dir/depend:
-	cd /home/shomeb/f/fredjoha/Desktop/master-coding/seqONE_timing/cmakedir && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/shomeb/f/fredjoha/Desktop/master-coding/seqONE_timing /home/shomeb/f/fredjoha/Desktop/master-coding/seqONE_timing /home/shomeb/f/fredjoha/Desktop/master-coding/seqONE_timing/cmakedir /home/shomeb/f/fredjoha/Desktop/master-coding/seqONE_timing/cmakedir /home/shomeb/f/fredjoha/Desktop/master-coding/seqONE_timing/cmakedir/CMakeFiles/TT.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/shomeb/f/fredjoha/Desktop/master-code/seqONE_timing/cmakedir && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/shomeb/f/fredjoha/Desktop/master-code/seqONE_timing /home/shomeb/f/fredjoha/Desktop/master-code/seqONE_timing /home/shomeb/f/fredjoha/Desktop/master-code/seqONE_timing/cmakedir /home/shomeb/f/fredjoha/Desktop/master-code/seqONE_timing/cmakedir /home/shomeb/f/fredjoha/Desktop/master-code/seqONE_timing/cmakedir/CMakeFiles/TT.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/TT.dir/depend
 

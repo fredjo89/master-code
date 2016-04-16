@@ -6,9 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/home/shomeb/f/fredjoha/Desktop/master-coding/seqONE_timing/data_defs.cpp
+/home/shomeb/f/fredjoha/Desktop/master-code/seqONE_timing/data_defs.cpp
 data_defs.h
-/home/shomeb/f/fredjoha/Desktop/master-coding/seqONE_timing/data_defs.h
+/home/shomeb/f/fredjoha/Desktop/master-code/seqONE_timing/data_defs.h
 iostream
 -
 iomanip
@@ -16,7 +16,7 @@ iomanip
 map
 -
 
-/home/shomeb/f/fredjoha/Desktop/master-coding/seqONE_timing/data_defs.h
+/home/shomeb/f/fredjoha/Desktop/master-code/seqONE_timing/data_defs.h
 iostream
 -
 vector

@@ -23,7 +23,7 @@
 using namespace std;
 
 int RANK, SIZE, TAG = 100;
-const string infile = "/home/shomeb/f/fredjoha/Desktop/master-coding/MRST/mrst-core/examples/data/tmp/basis_custom/input/";
+const string infile = "/home/shomeb/f/fredjoha/Desktop/master-code/MRST/mrst-core/examples/data/tmp/basis_custom/input/";
 
 
 
@@ -37,7 +37,7 @@ int main(int argc, char* argv[])
 	MPI_Comm_rank (MPI_COMM_WORLD, &RANK);
 
 	/* Timing variables */
-	const double NRUNS = 100;
+	const double NRUNS = 1000;
 	double OMP_totalTime = 0;
 	double OMP_JacobiTime = 0;
 	double seqONE_totalTime = 0;
@@ -68,8 +68,9 @@ int main(int argc, char* argv[])
 	}
 
 	/* *************************My new method********************************** */
-	double* seqONESolution;
+	double* seqONESolution = NULL;
 	for (int k = 0; k<NRUNS; k++){
+			delete[] seqONESolution;
 			seqONESolution = new double[grid.n_basis];
 			for (int i =0; i<grid.n_basis; i++){ seqONESolution[i] = globalBasis[i]; }
 
@@ -99,6 +100,7 @@ int main(int argc, char* argv[])
 			seqONE_totalTime+=MPI_Wtime()-start;
 
 			delete[] basisArray;
+
 	}
 	/*
 	cout<<endl;
@@ -108,10 +110,13 @@ int main(int argc, char* argv[])
 	cout<<"Jacobi Iteration Time:\t\t"<<endl<<seqONE_JacobiTime/NRUNS<<endl<<endl;
 	*/
 	cout<<endl<<endl;
+
+	//cout<<OMP_totalTime/NRUNS<<endl;
 	cout<<seqONE_totalTime/NRUNS<<endl;
-	cout<<makeBasis_Time/NRUNS<<endl;
-	cout<<makeTypeTwo_Time/NRUNS<<endl;
+	cout<<makeTypeTwo_Time/NRUNS+makeBasis_Time/NRUNS<<endl;
 	cout<<seqONE_JacobiTime/NRUNS<<endl<<endl;
+
+	cout<<seqONE_totalTime-makeTypeTwo_Time-makeBasis_Time-seqONE_JacobiTime<<endl<<endl;
 
 
 
