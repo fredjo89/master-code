@@ -6,7 +6,7 @@ testcase = 'custom';
 switch lower(testcase)
     case 'custom'
         temp1 = 200; 
-        temp2 = 12; 
+        temp2 = 8; 
         
         [nx ny] = deal(temp1); 
         theBasisDesider = ceil(temp1/temp2);

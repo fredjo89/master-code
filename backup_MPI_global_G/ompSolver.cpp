@@ -24,7 +24,8 @@ void ompBasis(Grid& grid, Matrix& mat, double* basis, Options opt){
   // Cache is used for intermediate storage of basis
   double* cache = new double[NB];
   // Used for sum of updates for renormalization
-  double* update_sum = new double[NF];
+  double* update_sum = new double[NF] {};
+
   // Storage for the update values
   double* basis_update = new double[NB];
 
@@ -51,6 +52,7 @@ void ompBasis(Grid& grid, Matrix& mat, double* basis, Options opt){
 
       }
 
+
   		/* **************STEP 2: Modification ONE ********************* */
   		for (int i = 0; i < NB; i++) {
   			int type = grid.celltypes[i];
@@ -73,6 +75,7 @@ void ompBasis(Grid& grid, Matrix& mat, double* basis, Options opt){
   			}
   		}
 
+
   		/* ************STEP 4: Update Basis Functions**************** */
   		for (int i = 0; i < NB; i++) {
   			basis[i] -= basis_update[i];
@@ -81,6 +84,7 @@ void ompBasis(Grid& grid, Matrix& mat, double* basis, Options opt){
   			}
   			basis_update[i] = 0;
   		}
+
 
   		/* ***************STEP 5: Renormalize************************ */
   		if((iter + 1) % opt.reNorm == 0 && iter > 1){

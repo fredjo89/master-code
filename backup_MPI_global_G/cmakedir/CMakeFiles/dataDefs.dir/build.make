@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G
+CMAKE_SOURCE_DIR = /home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/cmakedir
+CMAKE_BINARY_DIR = /home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G/cmakedir
 
 # Include any dependencies generated for this target.
 include CMakeFiles/dataDefs.dir/depend.make
@@ -51,17 +51,17 @@ include CMakeFiles/dataDefs.dir/flags.make
 
 CMakeFiles/dataDefs.dir/data_defs.cpp.o: CMakeFiles/dataDefs.dir/flags.make
 CMakeFiles/dataDefs.dir/data_defs.cpp.o: ../data_defs.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/cmakedir/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G/cmakedir/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/dataDefs.dir/data_defs.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/dataDefs.dir/data_defs.cpp.o -c /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/data_defs.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/dataDefs.dir/data_defs.cpp.o -c /home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G/data_defs.cpp
 
 CMakeFiles/dataDefs.dir/data_defs.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dataDefs.dir/data_defs.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/data_defs.cpp > CMakeFiles/dataDefs.dir/data_defs.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G/data_defs.cpp > CMakeFiles/dataDefs.dir/data_defs.cpp.i
 
 CMakeFiles/dataDefs.dir/data_defs.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dataDefs.dir/data_defs.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/data_defs.cpp -o CMakeFiles/dataDefs.dir/data_defs.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G/data_defs.cpp -o CMakeFiles/dataDefs.dir/data_defs.cpp.s
 
 CMakeFiles/dataDefs.dir/data_defs.cpp.o.requires:
 .PHONY : CMakeFiles/dataDefs.dir/data_defs.cpp.o.requires
@@ -98,6 +98,6 @@ CMakeFiles/dataDefs.dir/clean:
 .PHONY : CMakeFiles/dataDefs.dir/clean
 
 CMakeFiles/dataDefs.dir/depend:
-	cd /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/cmakedir && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/cmakedir /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/cmakedir /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/cmakedir/CMakeFiles/dataDefs.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G/cmakedir && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G /home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G /home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G/cmakedir /home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G/cmakedir /home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G/cmakedir/CMakeFiles/dataDefs.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/dataDefs.dir/depend
 

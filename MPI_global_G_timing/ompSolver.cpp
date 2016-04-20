@@ -24,7 +24,7 @@ void ompBasis(Grid& grid, Matrix& mat, double* basis, Options opt){
   // Cache is used for intermediate storage of basis
   double* cache = new double[NB];
   // Used for sum of updates for renormalization
-  double* update_sum = new double[NF];
+  double* update_sum = new double[NF]{};
   // Storage for the update values
   double* basis_update = new double[NB];
 

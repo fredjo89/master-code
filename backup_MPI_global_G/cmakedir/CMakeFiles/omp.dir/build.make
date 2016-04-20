@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G
+CMAKE_SOURCE_DIR = /home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/cmakedir
+CMAKE_BINARY_DIR = /home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G/cmakedir
 
 # Include any dependencies generated for this target.
 include CMakeFiles/omp.dir/depend.make
@@ -51,17 +51,17 @@ include CMakeFiles/omp.dir/flags.make
 
 CMakeFiles/omp.dir/ompSolver.cpp.o: CMakeFiles/omp.dir/flags.make
 CMakeFiles/omp.dir/ompSolver.cpp.o: ../ompSolver.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/cmakedir/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G/cmakedir/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/omp.dir/ompSolver.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/omp.dir/ompSolver.cpp.o -c /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/ompSolver.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/omp.dir/ompSolver.cpp.o -c /home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G/ompSolver.cpp
 
 CMakeFiles/omp.dir/ompSolver.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/omp.dir/ompSolver.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/ompSolver.cpp > CMakeFiles/omp.dir/ompSolver.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G/ompSolver.cpp > CMakeFiles/omp.dir/ompSolver.cpp.i
 
 CMakeFiles/omp.dir/ompSolver.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/omp.dir/ompSolver.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/ompSolver.cpp -o CMakeFiles/omp.dir/ompSolver.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G/ompSolver.cpp -o CMakeFiles/omp.dir/ompSolver.cpp.s
 
 CMakeFiles/omp.dir/ompSolver.cpp.o.requires:
 .PHONY : CMakeFiles/omp.dir/ompSolver.cpp.o.requires
@@ -98,6 +98,6 @@ CMakeFiles/omp.dir/clean:
 .PHONY : CMakeFiles/omp.dir/clean
 
 CMakeFiles/omp.dir/depend:
-	cd /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/cmakedir && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/cmakedir /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/cmakedir /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/cmakedir/CMakeFiles/omp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G/cmakedir && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G /home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G /home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G/cmakedir /home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G/cmakedir /home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G/cmakedir/CMakeFiles/omp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/omp.dir/depend
 

@@ -41,7 +41,7 @@ int main(int argc, char* argv[])
 	if(readBasisOperator(&grid, globalBasis, infile)){return 1;};
 
 	Options opt;
-	opt.maxIter = 99;
+	opt.maxIter = 1;
 	opt.tolerance = -1;
 
 	/* *************************get OMP solution******************************* */
@@ -50,6 +50,8 @@ int main(int argc, char* argv[])
 		for (int i =0; i<grid.n_basis; i++){ ompSolution[i] = globalBasis[i]; }
 		ompBasis(grid, mat, ompSolution, opt);
 	}
+
+
 	/* *************************Create basisDistr***************************** */
 	MPI_Barrier(MPI_COMM_WORLD);
 	double start = MPI_Wtime();
@@ -59,7 +61,7 @@ int main(int argc, char* argv[])
 		for (int i = 0; i< SIZE; i++){
 			basisDistr[i] =  threadStart(i, SIZE, grid.M);
 		}
-		
+
 		basisDistr[SIZE] = grid.M;
 		int firstBasis = basisDistr[RANK];				// Number of the first basis function
 		int lastBasis = basisDistr[RANK+1]-1;			// Number of the last basis function
@@ -126,13 +128,20 @@ int main(int argc, char* argv[])
 
 	double error = 0;
 	if (RANK==0){
+		bool mERROR = false;
 		for (int i = 0; i<grid.n_basis; i++){
 			double temp = abs(aTEMP[i] - ompSolution[i]);
 			if (temp>error) error = temp;
-			if (error>1) cout<<"MAJOR ERROR!"<<endl;
+			if (error>1 && !mERROR){
+				mERROR = true;
+				cout<<"MAJOR ERROR!"<<endl;
+			}
 		}
-		cout<<"Error: "<<error<<endl;
 	}
+
+	cout<<"Discrepancy: "<<error<<endl;
+
+
 
 
 	delete[] ompSolution;

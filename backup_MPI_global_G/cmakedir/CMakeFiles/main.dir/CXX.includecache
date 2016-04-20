@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/TypeTwo.h
+/home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G/TypeTwo.h
 data_defs.h
-/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/data_defs.h
+/home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G/data_defs.h
 
-/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/data_defs.h
+/home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G/data_defs.h
 iostream
 -
 vector
@@ -18,17 +18,17 @@ vector
 map
 -
 
-/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/main.cpp
+/home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G/main.cpp
 data_defs.h
-/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/data_defs.h
+/home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G/data_defs.h
 readFromFile.h
-/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/readFromFile.h
+/home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G/readFromFile.h
 ompSolver.h
-/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/ompSolver.h
+/home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G/ompSolver.h
 utilities.h
-/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/utilities.h
+/home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G/utilities.h
 TypeTwo.h
-/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/TypeTwo.h
+/home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G/TypeTwo.h
 iostream
 -
 string
@@ -42,13 +42,13 @@ cmath
 iomanip
 -
 
-/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/ompSolver.h
+/home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G/ompSolver.h
 data_defs.h
-/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/data_defs.h
+/home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G/data_defs.h
 
-/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/readFromFile.h
+/home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G/readFromFile.h
 data_defs.h
-/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/data_defs.h
+/home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G/data_defs.h
 iostream
 -
 fstream
@@ -56,7 +56,7 @@ fstream
 cstring
 -
 
-/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/utilities.h
+/home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G/utilities.h
 
 /usr/lib/openmpi/include/mpi.h
 stddef.h

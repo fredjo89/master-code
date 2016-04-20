@@ -6,17 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/Basis.h
+/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G_copy/Basis.h
 data_defs.h
-/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/data_defs.h
+/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G_copy/data_defs.h
 
-/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/TypeTwo.cpp
+/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G_copy/TypeTwo.cpp
 TypeTwo.h
-/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/TypeTwo.h
+/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G_copy/TypeTwo.h
 Basis.h
-/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/Basis.h
+/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G_copy/Basis.h
 data_defs.h
-/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/data_defs.h
+/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G_copy/data_defs.h
 iostream
 -
 iomanip
@@ -26,13 +26,13 @@ map
 mpi.h
 -
 
-/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/TypeTwo.h
+/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G_copy/TypeTwo.h
 data_defs.h
-/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/data_defs.h
+/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G_copy/data_defs.h
 Basis.h
-/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/Basis.h
+/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G_copy/Basis.h
 
-/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/data_defs.h
+/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G_copy/data_defs.h
 iostream
 -
 vector

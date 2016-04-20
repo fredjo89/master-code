@@ -4,7 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/main.cpp" "/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/cmakedir/CMakeFiles/main.dir/main.cpp.o"
+  "/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G_copy/main.cpp" "/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G_copy/cmakedir/CMakeFiles/main.dir/main.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -15,12 +15,12 @@ SET(CMAKE_TARGET_DEFINITIONS
 
 # Targets to which this target links.
 SET(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/cmakedir/CMakeFiles/read.dir/DependInfo.cmake"
-  "/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/cmakedir/CMakeFiles/dataDefs.dir/DependInfo.cmake"
-  "/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/cmakedir/CMakeFiles/omp.dir/DependInfo.cmake"
-  "/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/cmakedir/CMakeFiles/utils.dir/DependInfo.cmake"
-  "/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/cmakedir/CMakeFiles/TT.dir/DependInfo.cmake"
-  "/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/cmakedir/CMakeFiles/Basis.dir/DependInfo.cmake"
+  "/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G_copy/cmakedir/CMakeFiles/read.dir/DependInfo.cmake"
+  "/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G_copy/cmakedir/CMakeFiles/dataDefs.dir/DependInfo.cmake"
+  "/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G_copy/cmakedir/CMakeFiles/omp.dir/DependInfo.cmake"
+  "/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G_copy/cmakedir/CMakeFiles/utils.dir/DependInfo.cmake"
+  "/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G_copy/cmakedir/CMakeFiles/TT.dir/DependInfo.cmake"
+  "/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G_copy/cmakedir/CMakeFiles/Basis.dir/DependInfo.cmake"
   )
 
 # The include file search paths:

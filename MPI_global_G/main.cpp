@@ -33,7 +33,7 @@ int main(int argc, char* argv[])
 	if(readBasisOperator(&grid, globalBasis, infile)){return 1;};
 
 	Options opt;
-	opt.maxIter = 1;
+	opt.maxIter = 99;
 	opt.tolerance = -1;
 	double start; // timing variable
 
@@ -67,12 +67,14 @@ int main(int argc, char* argv[])
 	TypeTwo typeTwo(basisArray, nBasis, SIZE, RANK, basisDistr);
 	typeTwo.setupSending();
 
+
 	for (int i =0; i<opt.maxIter; i++){
 		for (int i = 0; i<nBasis; i++){ basisArray[i].jacobiProduct(); }
 		typeTwo.localSum();
 		typeTwo.sendAndRecieve();
 		typeTwo.TTupdate();
 	}
+
 
 
 	/* ********Gather basis functions on thread 0 and check discrepancy******** */
@@ -102,9 +104,12 @@ int main(int argc, char* argv[])
 			double temp = abs(global_GSolution[i] - ompSolution[i]);
 			if (temp>error) error = temp;
 			if (error>1) cout<<"MAJOR ERROR!"<<endl;
+			if (temp!=temp) cout<<"NaN OCCURED!"<<endl;
 		}
-		cout<<"Discrepancy: "<<error<<endl;
+		cout<<"Discrepancy:\t"<<error<<endl;
 	}
+
+
 
 	MPI_Finalize();
 };

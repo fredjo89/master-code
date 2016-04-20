@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G
+CMAKE_SOURCE_DIR = /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G_copy
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/cmakedir
+CMAKE_BINARY_DIR = /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G_copy/cmakedir
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Basis.dir/depend.make
@@ -51,17 +51,17 @@ include CMakeFiles/Basis.dir/flags.make
 
 CMakeFiles/Basis.dir/Basis.cpp.o: CMakeFiles/Basis.dir/flags.make
 CMakeFiles/Basis.dir/Basis.cpp.o: ../Basis.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/cmakedir/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G_copy/cmakedir/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/Basis.dir/Basis.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Basis.dir/Basis.cpp.o -c /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/Basis.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Basis.dir/Basis.cpp.o -c /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G_copy/Basis.cpp
 
 CMakeFiles/Basis.dir/Basis.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Basis.dir/Basis.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/Basis.cpp > CMakeFiles/Basis.dir/Basis.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G_copy/Basis.cpp > CMakeFiles/Basis.dir/Basis.cpp.i
 
 CMakeFiles/Basis.dir/Basis.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Basis.dir/Basis.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/Basis.cpp -o CMakeFiles/Basis.dir/Basis.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G_copy/Basis.cpp -o CMakeFiles/Basis.dir/Basis.cpp.s
 
 CMakeFiles/Basis.dir/Basis.cpp.o.requires:
 .PHONY : CMakeFiles/Basis.dir/Basis.cpp.o.requires
@@ -98,6 +98,6 @@ CMakeFiles/Basis.dir/clean:
 .PHONY : CMakeFiles/Basis.dir/clean
 
 CMakeFiles/Basis.dir/depend:
-	cd /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/cmakedir && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/cmakedir /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/cmakedir /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/cmakedir/CMakeFiles/Basis.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G_copy/cmakedir && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G_copy /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G_copy /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G_copy/cmakedir /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G_copy/cmakedir /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G_copy/cmakedir/CMakeFiles/Basis.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/Basis.dir/depend
 

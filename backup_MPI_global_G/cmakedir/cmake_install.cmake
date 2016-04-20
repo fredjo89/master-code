@@ -1,4 +1,4 @@
-# Install script for directory: /home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G
+# Install script for directory: /home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -38,7 +38,7 @@ ELSE(CMAKE_INSTALL_COMPONENT)
   SET(CMAKE_INSTALL_MANIFEST "install_manifest.txt")
 ENDIF(CMAKE_INSTALL_COMPONENT)
 
-FILE(WRITE "/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/cmakedir/${CMAKE_INSTALL_MANIFEST}" "")
+FILE(WRITE "/home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G/cmakedir/${CMAKE_INSTALL_MANIFEST}" "")
 FOREACH(file ${CMAKE_INSTALL_MANIFEST_FILES})
-  FILE(APPEND "/home/shomeb/f/fredjoha/Desktop/master-code/MPI_global_G/cmakedir/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
+  FILE(APPEND "/home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G/cmakedir/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
 ENDFOREACH(file)
