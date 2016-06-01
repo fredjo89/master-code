@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/shomeb/f/fredjoha/Desktop/master-code/limSendOne/data_defs.h
+iostream
+-
+vector
+-
+map
+-
+
+/home/shomeb/f/fredjoha/Desktop/master-code/limSendOne/readFromFile.cpp
+readFromFile.h
+/home/shomeb/f/fredjoha/Desktop/master-code/limSendOne/readFromFile.h
+
+/home/shomeb/f/fredjoha/Desktop/master-code/limSendOne/readFromFile.h
+data_defs.h
+/home/shomeb/f/fredjoha/Desktop/master-code/limSendOne/data_defs.h
+iostream
+-
+fstream
+-
+cstring
+-
+

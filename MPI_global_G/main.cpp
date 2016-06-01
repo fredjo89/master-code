@@ -109,7 +109,8 @@ int main(int argc, char* argv[])
 		cout<<"Discrepancy:\t"<<error<<endl;
 	}
 
-
+	//printArray(global_GSolution, grid.n_basis); cout<<endl<<endl;
+	//printArray(ompSolution, grid.n_basis);
 
 	MPI_Finalize();
 };

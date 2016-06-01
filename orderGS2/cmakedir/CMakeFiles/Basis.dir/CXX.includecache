@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/shomeb/f/fredjoha/Desktop/master-code/orderGS2/Basis.cpp
+Basis.h
+/home/shomeb/f/fredjoha/Desktop/master-code/orderGS2/Basis.h
+data_defs.h
+/home/shomeb/f/fredjoha/Desktop/master-code/orderGS2/data_defs.h
+iomanip
+-
+map
+-
+iostream
+-
+math.h
+-
+
+/home/shomeb/f/fredjoha/Desktop/master-code/orderGS2/Basis.h
+data_defs.h
+/home/shomeb/f/fredjoha/Desktop/master-code/orderGS2/data_defs.h
+
+/home/shomeb/f/fredjoha/Desktop/master-code/orderGS2/data_defs.h
+iostream
+-
+vector
+-
+map
+-
+

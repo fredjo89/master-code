@@ -5,8 +5,8 @@ testcase = 'custom';
 
 switch lower(testcase)
     case 'custom'
-        temp1 = 200; 
-        temp2 = 8; 
+        temp1 = 8; 
+        temp2 = 7; 
         
         [nx ny] = deal(temp1); 
         theBasisDesider = ceil(temp1/temp2);
@@ -14,9 +14,13 @@ switch lower(testcase)
         G = cartGrid([nx ny]);
         rock = makeRock(G, 1, 1);
         p = partitionUI(G, [cgxy, cgxy]);
+        
+        %plotCellData(G,rock.poro);
+        %outlineCoarseGrid(G,p,'r')
+        
     case 'hetero'
-        temp1 = 120; 
-        temp2 = 40; 
+        temp1 = 220; 
+        temp2 = 45; 
         [nx ny] = deal(temp1); 
         theBasisDesider = ceil(temp1/temp2);
         G = cartGrid([nx ny], [2, 2]);
@@ -36,7 +40,7 @@ switch lower(testcase)
         rock = makeRock(G, 1, 1);
         p = partitionUI(G, [8, 4]);
     case 'big'
-        G = cartGrid([50, 50, 20]);
+        G = cartGrid([10, 20, 30]);
         rock = makeRock(G, 1, 1);
         p = partitionUI(G, [5, 5, 2]);
     case 'huge'

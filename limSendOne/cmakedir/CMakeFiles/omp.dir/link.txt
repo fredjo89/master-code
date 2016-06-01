@@ -1,0 +1,2 @@
+/usr/bin/ar cr libomp.a  CMakeFiles/omp.dir/ompSolver.cpp.o
+/usr/bin/ranlib libomp.a

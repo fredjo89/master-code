@@ -1,0 +1,6 @@
+#!/bin/bash
+# My first script
+
+echo "Hello World!"
+make
+mpirun -n 3 ./main

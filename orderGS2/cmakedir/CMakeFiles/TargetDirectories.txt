@@ -1,0 +1,8 @@
+/home/shomeb/f/fredjoha/Desktop/master-code/orderGS2/cmakedir/CMakeFiles/Basis.dir
+/home/shomeb/f/fredjoha/Desktop/master-code/orderGS2/cmakedir/CMakeFiles/GS.dir
+/home/shomeb/f/fredjoha/Desktop/master-code/orderGS2/cmakedir/CMakeFiles/TT.dir
+/home/shomeb/f/fredjoha/Desktop/master-code/orderGS2/cmakedir/CMakeFiles/dataDefs.dir
+/home/shomeb/f/fredjoha/Desktop/master-code/orderGS2/cmakedir/CMakeFiles/main.dir
+/home/shomeb/f/fredjoha/Desktop/master-code/orderGS2/cmakedir/CMakeFiles/omp.dir
+/home/shomeb/f/fredjoha/Desktop/master-code/orderGS2/cmakedir/CMakeFiles/read.dir
+/home/shomeb/f/fredjoha/Desktop/master-code/orderGS2/cmakedir/CMakeFiles/utils.dir

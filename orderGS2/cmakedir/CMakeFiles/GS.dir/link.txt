@@ -1,0 +1,2 @@
+/usr/bin/ar cr libGS.a  CMakeFiles/GS.dir/orderGS_Solver.cpp.o
+/usr/bin/ranlib libGS.a
