@@ -7,6 +7,7 @@
 class TypeTwo{
 public:
   double omega;         // Relaxation factor
+
   int SIZE;            // Number of threads
   int RANK;            // Rank of thread
 
@@ -35,23 +36,22 @@ public:
   map<int, set<int> > H;  // H map
 
   set<int> sendRanks;       // Set containing the ranks where sharing will be carried out.
-  int Ncomm;                // Number of threads the thread will send/recv to. 
+  int Ncomm;                // Number of threads the thread will send/recv to.
 
 
 
   TypeTwo(){valAddress=NULL; upAddress=NULL; aIndex=NULL; twoN=NULL;
     sum=NULL; basisDistr=NULL; mapOne=NULL; mapTwo=NULL; recvBuff=NULL;
-    recvCounts=NULL; displs=NULL;   omega=0; addL=0; sumL=0; SIZE=0;
-    RANK=0; mapL=0; buffL=0;}
-  TypeTwo(Basis* basisArray, int M, int S, int R, int* bD, map<int,set<int> >& H);
+    recvCounts=NULL; displs=NULL; addL=0; sumL=0; buffL=0;}
+  TypeTwo(Grid& grid, Basis* basisArray, int M, int S, int R, int* bD);
   ~TypeTwo(){delete[] valAddress; delete[] upAddress,  delete[] aIndex;
             delete[] twoN; delete[] sum; delete[] mapOne; delete[] mapTwo; delete[] recvBuff;
             delete[] recvCounts; delete[] displs; }
-
-  void print();
 
   void localSum();        // Sum local type 2 cells
   void TTupdate();        // Update type two cells
   void setupSending();    // Create mapOne, mapTwo and recvBuff.
   void sendAndRecieve();  // Share recvBuff
+
+  void print();
 };

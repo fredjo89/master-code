@@ -1,8 +1,9 @@
-
 #include "TypeTwo.h"
+
 #include "Basis.h"
 #include "data_defs.h"
 #include "utilities.h"
+
 #include <iostream>
 #include <iomanip>
 #include <map>
@@ -12,37 +13,25 @@
 #include <cmath>
 using namespace std;
 
-
-TypeTwo::TypeTwo(Basis* basisArray, int M, int S, int R, int* bD,
-                                      map<int,set<int> >& h) : TypeTwo(){
-  H = h;
-  sendL = H.size();
+// ************************************************************************** //
+TypeTwo::TypeTwo(Grid& grid, Basis* basisArray, int M, int S, int R, int* bD) : TypeTwo(){
 
   omega = basisArray[0].omega;
-
   SIZE = S;
   RANK = R;
   basisDistr = bD;
+
   map<int,int> typeTwoInfo;
+  makeH(grid,H, typeTwoInfo, RANK, basisDistr);
 
-  for (int i = 0; i<M; i++){
-    int* support = basisArray[i].support;
-    int* celltypes = basisArray[i].celltypes;
-    for (int j = 0; j<basisArray[i].size; j++){
-      if (celltypes[j]==2){
-        typeTwoInfo[support[j]]+=1;
-      }
-    }
-  }
-
+  sendL = H.size();
   sumL = typeTwoInfo.size();
   aIndex = new int[sumL];
   twoN = new int[sumL];
   sum = new double [sumL]{};
 
-
   map<int,int>::iterator it;
-  int k=0;
+  int k = 0;
   // First placing the cells that will be sent
   for (it = typeTwoInfo.begin(); it!=typeTwoInfo.end(); it++){
     if ( H.find(it->first) != H.end() ) {
@@ -85,6 +74,7 @@ TypeTwo::TypeTwo(Basis* basisArray, int M, int S, int R, int* bD,
       }
     }
   }
+
 }
 
 // *******************setupSending()***************************************** //
@@ -97,14 +87,11 @@ void TypeTwo::setupSending(){
   for (it1=H.begin(); it1!=H.end(); it1++){
     for (it2=it1->second.begin(); it2!=it1->second.end(); it2++) commBasis.insert(*it2);
   }
-  for (int i = basisDistr[RANK]; i<basisDistr[RANK+1]; i++) commBasis.erase(i);
 
   // Finds all threads that requires communication
   for (it2=commBasis.begin(); it2!=commBasis.end(); it2++){
     for (int i = 0; i<SIZE+1; i++){
-      if (*it2>=basisDistr[i] && *it2<basisDistr[i+1]){
-        sendRanks.insert(i);
-      }
+      if (*it2>=basisDistr[i] && *it2<basisDistr[i+1]) sendRanks.insert(i);
     }
   }
 
@@ -124,7 +111,6 @@ void TypeTwo::setupSending(){
   MPI_Waitall(Ncomm, send_request, statSend);
   MPI_Waitall(Ncomm, recv_request, statRecv);
 
-
   // By now we have:
   // sendRanks: All threads that it must send and recieve to
   // recvCounts: The number of elements it will recieve from each threads
@@ -134,7 +120,7 @@ void TypeTwo::setupSending(){
   recvBuff = new double [buffL];
 
   double twoNdouble[sendL];
-  for (int i =0; i<sendL; i++) twoNdouble[i] = twoN[i];
+  for (int i = 0; i<sendL; i++) twoNdouble[i] = twoN[i];
 
   displs = new int[sendRanks.size()]; displs[0] = 0;
   for (int i = 1; i<sendRanks.size(); i++) displs[i] = displs[i-1]+recvCounts[i-1];
@@ -171,8 +157,8 @@ void TypeTwo::setupSending(){
     k++;
   }
 }
-// ************************************************************************** //
 
+// ************************************************************************** //
 void TypeTwo::sendAndRecieve(){
 
   MPI_Status statSend[Ncomm], statRecv[Ncomm];
@@ -181,7 +167,8 @@ void TypeTwo::sendAndRecieve(){
   int k = 0;
   for (it = sendRanks.begin(); it!=sendRanks.end(); it++){
     MPI_Isend(sum, sendL, MPI_DOUBLE, *it, 100,MPI_COMM_WORLD, &send_request[k]);
-    MPI_Irecv(&recvBuff[displs[k]], recvCounts[k], MPI_DOUBLE, *it, 100, MPI_COMM_WORLD, &recv_request[k]);
+    MPI_Irecv(&recvBuff[displs[k]], recvCounts[k], MPI_DOUBLE, *it, 100,
+                                              MPI_COMM_WORLD, &recv_request[k]);
     k++;
   }
   MPI_Waitall(Ncomm, send_request, statSend);
@@ -190,10 +177,11 @@ void TypeTwo::sendAndRecieve(){
   for (int i = 0; i<mapL; i++) sum[mapOne[i]]+=recvBuff[mapTwo[i]];
 }
 
+// ************************************************************************** //
 void TypeTwo::localSum(){
   double oneSum = 0;
   int k = 0;
-  for (int i =0; i<addL; i++){
+  for (int i = 0; i<addL; i++){
     if (i!=aIndex[k+1]) oneSum+=*upAddress[i];
     else{
       sum[k] = oneSum;
@@ -202,13 +190,9 @@ void TypeTwo::localSum(){
     }
   }
   sum[k] = oneSum;
-
-
-
 }
 
-
-
+// ************************************************************************** //
 void TypeTwo::TTupdate(){
   int k = 1;
   for (int i = 0; i<addL; i++){
@@ -220,24 +204,20 @@ void TypeTwo::TTupdate(){
 
 void TypeTwo::print(){
   cout<<"================================================================="<<endl
-  <<"PRINTING TypeTwo"<<endl;
-  cout<<"RANK: "<<RANK<<endl<<"SIZE: "<<SIZE<<endl;
-  cout<<"basisDistr: "<<endl;
-  for (int i = 0; i<SIZE+1; i++) cout<<basisDistr[i]<<endl;
-  cout<<"Number OF TYPE 2 CELLS: "<<sumL<<endl
-  <<"TOTAL NUMBER OF OCCURENCESS: "<<addL<<endl;
-  cout<<"PRINTING aInxed:"<<endl; for (int i = 0; i<sumL; i++){ cout<<aIndex[i]<<endl; }
+  <<"PRINTING TypeTwo"<<endl<<"RANK: "<<RANK<<endl<<"SIZE: "<<SIZE<<endl<<"basisDistr: "<<endl;
+  for (int i = 0; i<SIZE+1; i++) cout<<basisDistr[i]<<endl
+  <<"Number OF TYPE 2 CELLS: "<<sumL<<endl<<"TOTAL NUMBER OF OCCURENCESS: "<<addL<<endl
+  <<"PRINTING aInxed:"<<endl; for (int i = 0; i<sumL; i++){ cout<<aIndex[i]<<endl; }
   cout<<"PRINTING twoN:"<<endl; for (int i = 0; i<sumL; i++){ cout<<twoN[i]<<endl; }
   cout<<"PRINTING sum:"<<endl;
   for (int i = 0; i<sumL; i++){ cout<<sum[i]<<endl; }
-  cout<<"PRINTING valAddress and upAddress:"<<endl;
-  cout<<"cell\tval\t\tvalue\tup\t\t value"<<endl
+  cout<<"PRINTING valAddress and upAddress:"<<endl
+  <<"cell\tval\t\tvalue\tup\t\t value"<<endl
   <<"================================================================="<<endl;
   int k =0;
   for (int i = 0; i<addL; i++){
     if (i==aIndex[k+1]) k++;
-    cout<<twoN[k]<<":\t";
-    cout<<valAddress[i]<<":\t"<<*valAddress[i]<<"\t";
-    cout<<upAddress[i]<<":\t"<<*upAddress[i]<<endl;
+    cout<<twoN[k]<<":\t"<<valAddress[i]<<":\t"<<*valAddress[i]<<"\t"
+    <<upAddress[i]<<":\t"<<*upAddress[i]<<endl;
   }
 }

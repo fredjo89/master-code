@@ -190,7 +190,7 @@ MPIEXEC_POSTFLAGS:STRING=
 // run by MPIEXEC.
 MPIEXEC_PREFLAGS:STRING=
 
-//Path to a program.
+//Cleared
 MPI_CXX_COMPILER:FILEPATH=/usr/bin/mpicxx
 
 //MPI CXX compilation flags
@@ -205,7 +205,7 @@ MPI_CXX_LIBRARIES:STRING=/usr/lib/libmpi_cxx.so;/usr/lib/libmpi.so;/usr/lib/x86_
 //MPI CXX linking flags
 MPI_CXX_LINK_FLAGS:STRING=
 
-//Path to a program.
+//Cleared
 MPI_C_COMPILER:FILEPATH=/usr/bin/mpicc
 
 //MPI C compilation flags
@@ -231,6 +231,9 @@ TT_LIB_DEPENDS:STATIC=
 
 //Dependencies for target
 dataDefs_LIB_DEPENDS:STATIC=
+
+//Path to a program.
+file_cmd:FILEPATH=/usr/bin/file
 
 //Value Computed by CMake
 mpitry_BINARY_DIR:STATIC=/home/shomeb/f/fredjoha/Desktop/master-code/limSendOne/cmakedir
@@ -417,4 +420,6 @@ MPI_C_LINK_FLAGS-ADVANCED:INTERNAL=1
 MPI_HEADER_PATH:INTERNAL=MPI_HEADER_PATH-NOTFOUND
 //Scratch variable for MPI lib detection
 MPI_LIB:INTERNAL=MPI_LIB-NOTFOUND
+//ADVANCED property for variable: file_cmd
+file_cmd-ADVANCED:INTERNAL=1
 

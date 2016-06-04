@@ -1,8 +1,6 @@
 #include "readFromFile.h"
 using namespace std;
 
-
-
 /* ****************************************************************** */
 int readInfo(Grid* grid, std::string file_path) {
 	std::ifstream infofile, supportfile, typefile;
@@ -43,7 +41,6 @@ int readInfo(Grid* grid, std::string file_path) {
 	return 0;
 };
 
-
 /* ****************************************************************** */
 int readMatrix(Grid * grid, Matrix * mat, std::string file_path) {
 	std::ifstream f, fs;
@@ -71,14 +68,11 @@ int readMatrix(Grid * grid, Matrix * mat, std::string file_path) {
 
 	if (0) {
 		for (int i = 0; i < n_el; i++) {
-			for (int j = 0; j < maxRow; j++) {
-				ix = i*maxRow + j;
-			}
+			for (int j = 0; j < maxRow; j++) ix = i*maxRow + j;
 		}
 	}
 	return 0;
 };
-
 
 /* ****************************************************************** */
 int readBasisOperator(Grid * grid, double* basis, std::string file_path) {

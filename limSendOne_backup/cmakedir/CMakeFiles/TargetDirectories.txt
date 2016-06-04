@@ -1,0 +1,7 @@
+/home/shomeb/f/fredjoha/Desktop/master-code/limSendOne/cmakedir/CMakeFiles/Basis.dir
+/home/shomeb/f/fredjoha/Desktop/master-code/limSendOne/cmakedir/CMakeFiles/TT.dir
+/home/shomeb/f/fredjoha/Desktop/master-code/limSendOne/cmakedir/CMakeFiles/dataDefs.dir
+/home/shomeb/f/fredjoha/Desktop/master-code/limSendOne/cmakedir/CMakeFiles/main.dir
+/home/shomeb/f/fredjoha/Desktop/master-code/limSendOne/cmakedir/CMakeFiles/omp.dir
+/home/shomeb/f/fredjoha/Desktop/master-code/limSendOne/cmakedir/CMakeFiles/read.dir
+/home/shomeb/f/fredjoha/Desktop/master-code/limSendOne/cmakedir/CMakeFiles/utils.dir

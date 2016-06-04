@@ -29,87 +29,65 @@ int main(int argc, char* argv[])
 	// ***********************Read from file*********************************** //
 	Grid grid;
 	Matrix mat;
-	if(readInfo(&grid, infile)){return 1;};
-	if(readMatrix(&grid, &mat, infile)){return 1;};
+	if(readInfo(&grid, infile)) return 1;
+	if(readMatrix(&grid, &mat, infile)) return 1;
 	double globalBasis[grid.n_basis];
-	if(readBasisOperator(&grid, globalBasis, infile)){return 1;};
+	if(readBasisOperator(&grid, globalBasis, infile)) return 1;
 
 	Options opt;
-	opt.maxIter = 1;
+	opt.maxIter = 99;
 	opt.tolerance = -1;
 	double start; // timing variable
 
-
-
-
-
 	// *************************get OMP solution******************************* //
-	double  ompSolution[grid.n_basis];
+	double* ompSolution = NULL;
 	if (RANK==0){
 		start = MPI_Wtime();
+		ompSolution = new double[grid.n_basis];
 		for (int i=0; i<grid.n_basis; i++){ ompSolution[i] = globalBasis[i]; }
 		ompBasis(grid, mat, ompSolution, opt);
 		//cout<<"OMP time:\t"<<MPI_Wtime()-start<<endl;
 	}
 
-
 	// *******************MPI_global_G_2.0 starts****************************** //
-		MPI_Barrier(MPI_COMM_WORLD);
-	 	start = MPI_Wtime();
+	MPI_Barrier(MPI_COMM_WORLD);
+	start = MPI_Wtime();
 
-		int basisDistr[SIZE+1];
-		for (int i = 0; i< SIZE; i++){ basisDistr[i] =  threadStart(i, SIZE, grid.M); }
-		basisDistr[SIZE] = grid.M;
+	// Create the basisDistr vector.
+	int basisDistr[SIZE+1];
+	for (int i = 0; i< SIZE; i++){ basisDistr[i] =  threadStart(i, SIZE, grid.M); }
+	basisDistr[SIZE] = grid.M;
 
+	int firstBasis = basisDistr[RANK];				// Number of the first basis function
+	int lastBasis = basisDistr[RANK+1]-1;			// Number of the last basis function
+	int nBasis = lastBasis-firstBasis+1;		  // Number of basis functions on the current thread
 
-		int firstBasis = basisDistr[RANK];				// Number of the first basis function
-		int lastBasis = basisDistr[RANK+1]-1;			// Number of the last basis function
-		int nBasis = lastBasis-firstBasis+1;		  // Number of basis functions on the current thread
+	// Create Basis datastructures.
+	Basis  basisArray[nBasis];
+	for (int i = 0 ; i<nBasis; i++){
+		basisArray[i].makeBasis(grid, mat, globalBasis, firstBasis+i, opt.omega);
+		basisArray[i].makeLocalMapping();
+	}
 
-		Basis  basisArray[nBasis];
-		for (int i = 0 ; i<nBasis; i++){
-			Basis temp(grid, mat, globalBasis, firstBasis+i);
-			basisArray[i] = temp;
-			basisArray[i].makeLocalMapping();
-		}
+	// Create the TypeTwo structure.
+	TypeTwo typeTwo(grid, basisArray, nBasis, SIZE, RANK, basisDistr );
+	typeTwo.setupSending();
 
-		// Making  H for type 2 cells
-		map<int, set<int> > H;
-		makeH(grid,H, RANK, basisDistr);
-
-
-
-		// Making the TypeTwo structure
-		TypeTwo typeTwo(basisArray, nBasis, SIZE, RANK, basisDistr, H);
-		typeTwo.setupSending();
-
-
-
-		for (int i =0; i<opt.maxIter; i++){
-			for (int j = 0; j<nBasis; j++){ basisArray[j].jacobiProduct(); }
-
-			typeTwo.localSum();
-			typeTwo.sendAndRecieve();
-			typeTwo.TTupdate();
-		}
-
-
-
+	// Iteration.
+	for (int i =0; i<opt.maxIter; i++){
+		for (int j = 0; j<nBasis; j++){ basisArray[j].jacobiProduct(); }
+		typeTwo.localSum();
+		typeTwo.sendAndRecieve();
+		typeTwo.TTupdate();
+	}
 
 	// ********Gather basis functions on thread 0 and check discrepancy******** //
-	double global_GSolution[grid.n_basis];
-	gatherBasis(grid, basisDistr, basisArray,  RANK,  SIZE, global_GSolution);
+	double* limSendSolution = NULL; if (RANK==0) limSendSolution = new double[grid.n_basis];
+	gatherBasis(grid, basisDistr, basisArray,  RANK,  SIZE, limSendSolution);
+	if (RANK==0) computeDiscrepancy( grid, limSendSolution, ompSolution  );
 
-	//if (RANK==0) cout<<"TIME:\t\t"<<MPI_Wtime()- start<<endl;
-	if (RANK==0) computeDiscrepancy( grid, global_GSolution, ompSolution  );
-
-	//grid.print();
-	//printArray(ompSolution, grid.n_basis); cout<<endl<<endl;
-	//printArray(global_GSolution, grid.n_basis);
-
-
-
-
+	delete [] limSendSolution;
+	delete [] ompSolution;
 	MPI_Finalize();
 };
 

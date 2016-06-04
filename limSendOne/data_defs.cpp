@@ -1,8 +1,7 @@
-
 #include "data_defs.h"
+
 #include <iostream>
 #include <iomanip>
-#include <map>
 using namespace std;
 
 
@@ -28,8 +27,7 @@ void Grid::print(){
 void Matrix::print(){
     cout.precision(2);
     cout<<"PRINTING MATRIX"<<endl<<"Number of cells " <<N<<endl
-    <<"MaxRow: "<<maxRow<<endl
-    <<"j_index:"<<endl;
+    <<"MaxRow: "<<maxRow<<endl<<"j_index:"<<endl;
     for (int i = 0; i<maxRow*N; i++){
       cout<<j_index[i]<<"\t";
       if ((i+1)%maxRow==0){cout<<endl;}

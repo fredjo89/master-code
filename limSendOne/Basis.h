@@ -19,15 +19,15 @@ public:
 	double* mat_coef;		// corresponding matrix coefficients
 
 	Basis(Grid&, Matrix&, double* basis, int number, double omega);
-	Basis(Grid&, Matrix&, double* basis, int number);
-	Basis(){values = NULL; support = NULL; celltypes = NULL; mat_indices = NULL;
-															mat_coef = NULL; update = NULL; }
+	Basis(){values = NULL; support = NULL; celltypes = NULL;
+					update = NULL; mat_indices = NULL; mat_coef = NULL;  }
 	~Basis(){delete[] mat_indices; delete[] mat_coef;  delete[] update; }
 
 
 	// Shallow copying and swapping. rhs will be deleted after.
 	Basis& operator=(Basis& rhs);
 
+	void makeBasis(Grid&, Matrix&, double* basis, int number, double omega);
 	void makeLocalMapping();
 	void jacobiProduct();
 
