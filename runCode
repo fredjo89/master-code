@@ -1,0 +1,14 @@
+#!/bin/bash
+# My first script
+
+echo "Running Code!"
+make
+mpirun -n 1 ./main /home/shomeb/f/fredjoha/Desktop/master-code/MRST/mrst-core/examples/data/tmp/basis_custom/input/
+#mpirun -n 2 ./main /home/shomeb/f/fredjoha/Desktop/master-code/MRST/mrst-core/examples/data/tmp/basis_custom/input/
+#mpirun -n 3 ./main /home/shomeb/f/fredjoha/Desktop/master-code/MRST/mrst-core/examples/data/tmp/basis_custom/input/
+#mpirun -n 4 ./main /home/shomeb/f/fredjoha/Desktop/master-code/MRST/mrst-core/examples/data/tmp/basis_custom/input/
+
+
+
+# delete all test-problems:
+# rm -rf /home/shomeb/f/fredjoha/Desktop/master-code/MRST/mrst-core/examples/data/tmp/

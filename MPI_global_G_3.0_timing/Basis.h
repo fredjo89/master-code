@@ -29,6 +29,7 @@ public:
 	Basis& operator=(Basis& rhs);
 
 	void makeLocalMapping();
+	void makeLocalMapping_NEW();
 	void jacobiProduct();
 
 	void print();

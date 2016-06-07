@@ -73,6 +73,28 @@ void Basis::makeLocalMapping(){
 }
 
 /* ************************************************************************** */
+void Basis::makeLocalMapping_NEW(){
+  int max = support[0]; int min = support[0];
+  for (int i = 0; i<size; i++){
+    if (support[i]>max) max = support[i];
+    else if (support[i]<min) min = support[i];
+  }
+
+  int myMap[max - min + 1];
+  for (int i = 0; i<max-min+1; i++) myMap[i] = -2;
+  for (int i = 0; i<size; i++) myMap[support[i]-min] = i;
+
+  int index;
+  for (int i = 0; i<size*maxRow; i++){
+    index = mat_indices[i];
+      if (index!=-1){
+        if (index>=min && index<=max) mat_indices[i] = myMap[index - min];
+        else mat_indices[i] = -2;
+      }
+  }
+}
+
+/* ************************************************************************** */
 void Basis::jacobiProduct(){
   for (int i = 0; i<size; i++){
     update[i] = values[i];
@@ -81,7 +103,7 @@ void Basis::jacobiProduct(){
       for (int j =0; j<maxRow; j++){
         int index = mat_indices[it+j];
         if (index==-1) break;
-        if (index!=-2) update[i]+=mat_coef[it+j]*values[index];
+        if (index!=-2){ update[i]+=mat_coef[it+j]*values[index]; }
       }
     }
   }

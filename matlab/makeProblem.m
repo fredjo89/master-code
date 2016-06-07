@@ -5,7 +5,7 @@ testcase = 'custom';
 
 switch lower(testcase)
     case 'custom'
-        temp1 = 180; 
+        temp1 = 200; 
         temp2 = 12; 
         
         [nx ny] = deal(temp1); 
@@ -19,8 +19,8 @@ switch lower(testcase)
         %outlineCoarseGrid(G,p,'r')
         
     case 'hetero'
-        temp1 = 220; 
-        temp2 = 45; 
+        temp1 = 40; 
+        temp2 = 2; 
         [nx ny] = deal(temp1); 
         theBasisDesider = ceil(temp1/temp2);
         G = cartGrid([nx ny], [2, 2]);
