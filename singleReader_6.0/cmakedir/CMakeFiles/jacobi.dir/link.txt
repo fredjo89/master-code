@@ -1,0 +1,2 @@
+/usr/bin/ar cr libjacobi.a  CMakeFiles/jacobi.dir/jacobi.cpp.o
+/usr/bin/ranlib libjacobi.a

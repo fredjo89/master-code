@@ -31,14 +31,14 @@ int main(int argc, char* argv[])
 	if(readBasisOperator(&grid, globalBasis, infile)){return 1;};
 
 	Options opt;
-	opt.maxIter = 10000;
+	opt.maxIter = 1000;
 	opt.tolerance = -1;
 	double start, start2;  // timing variable
 
 	double temp1 = 0; double temp2 = 0;
 	// *************************get OMP solution******************************* //
 	double* ompSolution = NULL;
-	if (RANK==0){
+	if (RANK==-1){
 		start = MPI_Wtime();
 		ompSolution = new double[grid.n_basis];
 		for (int i=0; i<grid.n_basis; i++){ ompSolution[i] = globalBasis[i]; }
@@ -49,8 +49,9 @@ int main(int argc, char* argv[])
 
 
 
-	// *******************MPI_global_G_2.0 starts****************************** //
-
+	// *******************MPI_global_G_3.0 starts****************************** //
+		double T1 = 0, T2 = 0;
+		start = MPI_Wtime();
 
 		int basisDistr[SIZE+1];
 		for (int i = 0; i< SIZE; i++){ basisDistr[i] =  threadStart(i, SIZE, grid.M); }
@@ -76,20 +77,21 @@ int main(int argc, char* argv[])
 		TypeTwo typeTwo(basisArray, nBasis, SIZE, RANK, basisDistr, H);
 		typeTwo.setupSending();
 
-		double TIME = 0;
+		MPI_Barrier(MPI_COMM_WORLD);
+		T1+= MPI_Wtime() - start;
+		start = MPI_Wtime();
 
 		for (int i =0; i<opt.maxIter; i++){
-			start = MPI_Wtime();
 			for (int j = 0; j<nBasis; j++){ basisArray[j].jacobiProduct(); }
-			TIME += MPI_Wtime() - start;
-
 			typeTwo.localSum();
 			typeTwo.sendAndRecieve();
 			typeTwo.TTupdate();
-
 		}
 
-		for (int j = 0; j<nBasis; j++){ basisArray[j].print(); }
+		MPI_Barrier(MPI_COMM_WORLD);
+		T2+= MPI_Wtime() - start;
+		if (RANK==0)cout<<T1<<endl<<T2/opt.maxIter<<endl<<endl;
+
 		// ********Gather basis functions on thread 0 and check discrepancy******** //
 		//double global_GSolution[grid.n_basis];
 		//gatherBasis(grid, basisDistr, basisArray,  RANK,  SIZE, global_GSolution);
@@ -97,7 +99,6 @@ int main(int argc, char* argv[])
 
 
 
-	cout<<TIME<<endl;
 
 
 	MPI_Finalize();

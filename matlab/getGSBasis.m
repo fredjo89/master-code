@@ -1,10 +1,5 @@
 function [basis, i] = getGSBasis(CG, A, iterations, tol, w)
-    
-    iterations = floor(iterations);
-    % Ensuring that the rows of A sum to zero
     A = A - diag(sum(A, 2));
-    
-    % Creating R the normal way
     R = controlVolumeRestriction(CG.partition);
     
     % Create interaction region 
@@ -23,26 +18,35 @@ function [basis, i] = getGSBasis(CG, A, iterations, tol, w)
     D_inv = spdiags(1./D, 0, n, n);
     
     F = - (triu(A) - spdiags(D, 0, n, n));
+    E = - (tril(A) - spdiags(D, 0, n, n)) ;
     
   
     FORWARD = A+F;
+    BACKWARD = A+E;
 
     i = 0;
     while i < iterations
-        % get update
-        update = (FORWARD)\(F*I); 
-
         
-        % Modify update by step length (SOR)
+        update = (FORWARD)\(F*I); 
+        %update = BACKWARD\(E*I); 
+        
+        % forward step
+        %update = (FORWARD)\(F*I); 
+        %update = update.*interactionMap;
+        %update = bsxfun(@rdivide, update, sum(update, 2));
+      
         %update = (1-w)*I + w*update;
         
-        % remove out of bounds
-        update = update.*interactionMap;
+        %backward step
+        %update = BACKWARD\(E*update); 
+        %update = update.*interactionMap;
+        %update = bsxfun(@rdivide, update, sum(update, 2));
+  
+        %update = (1-w)*I + w*update;
         
-        % Normalize
-        update = bsxfun(@rdivide, update, sum(update, 2));
         
-        % Get difference betweel last and current basis functions
+        
+        
         diff = max(max(abs(update-I)));
         
         I = update; 

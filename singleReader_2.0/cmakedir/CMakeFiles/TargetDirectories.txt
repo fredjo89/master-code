@@ -1,0 +1,7 @@
+/home/shomeb/f/fredjoha/Desktop/master-code/singleReader_2.0/cmakedir/CMakeFiles/dataDefs.dir
+/home/shomeb/f/fredjoha/Desktop/master-code/singleReader_2.0/cmakedir/CMakeFiles/distr.dir
+/home/shomeb/f/fredjoha/Desktop/master-code/singleReader_2.0/cmakedir/CMakeFiles/jacobi.dir
+/home/shomeb/f/fredjoha/Desktop/master-code/singleReader_2.0/cmakedir/CMakeFiles/main.dir
+/home/shomeb/f/fredjoha/Desktop/master-code/singleReader_2.0/cmakedir/CMakeFiles/omp.dir
+/home/shomeb/f/fredjoha/Desktop/master-code/singleReader_2.0/cmakedir/CMakeFiles/read.dir
+/home/shomeb/f/fredjoha/Desktop/master-code/singleReader_2.0/cmakedir/CMakeFiles/utils.dir

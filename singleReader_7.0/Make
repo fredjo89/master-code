@@ -1,0 +1,9 @@
+#!/bin/bash
+
+#  Compilers: -std=c++11 or -std=gnu++11
+            
+echo "Compiling Code!"
+cd cmakedir
+make
+cd ..
+

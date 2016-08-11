@@ -1,0 +1,24 @@
+#!/bin/bash
+# My first script
+
+#  Compilers: -std=c++11 or -std=gnu++11
+
+#"/home/shomeb/f/fredjoha/Desktop/master-code/checkout-mrst/mrst-bitbucket/mrst-core/examples/data/tmp/basis_custom/input/"
+
+
+
+custom="/home/shomeb/f/fredjoha/Desktop/master-code/checkout-mrst/mrst-bitbucket/mrst-core/examples/data/tmp/basis_custom/input/"
+
+            
+echo "Compiling Code!"
+make
+echo "Running Code!"
+mpirun -n 1 ./main $custom
+#mpirun -n 2 ./main $custom
+#mpirun -n 3 ./main $custom
+#mpirun -n 4 ./main $custom
+
+
+
+# delete all test-problems:
+# rm -rf /home/shomeb/f/fredjoha/Desktop/master-code/MRST/mrst-core/examples/data/tmp/

@@ -1,10 +1,5 @@
-function [basis, i] = getJBasis(CG, A, iterations, tol, w)
+function [I, error] = getJBasis(CG, A, iterations,tol, w)
 
-    iterations = floor(iterations);
-
-    % Ensuring that the rows of A sum to zero
-    A = A - diag(sum(A, 2));
-    
     % Creating R the normal way
     R = controlVolumeRestriction(CG.partition);
     
@@ -25,44 +20,41 @@ function [basis, i] = getJBasis(CG, A, iterations, tol, w)
     M = D_inv*A;
    
     
+    error_init = full(sum(sum(abs(A*I))));
+    error(1) =  1;
     
-
+    for  i =1:iterations
         
-    i = 0;
-    while i < iterations
+        prev = I; 
         
-        last = I; 
-        
-        update = M*I;
-        
+        update = -M*I;
         update = update.*interactionMap;
-       
-        I = I - w*update;
         
-        
+        I = I + w*update;
         I = bsxfun(@rdivide, I, sum(I, 2));
         
-        diff = max(max(abs(last - I)));
         
-        if (diff < tol)
-            i = i+1; 
-            dispif(true, 'Jacobi converged after %d iterations\n', i);
+
+        error(i+1) = sum(sum(abs(A*I)))/error_init;
+        
+        if abs(error(i+1)-error(i))<tol
+            X = ['TOL, J: ', num2str(i)];
+            disp(X);
+            break;
+        elseif error(i+1)>error(i)
+            X = ['INCREASE, J: ', num2str(i)];
+            disp(X);
             break;
         end
         
+        if rem(i,1000)==0
+            disp([num2str(i),', errordiff: ',num2str(abs(error(i+1)-error(i))) ]);
+        end
+        
+    end
 
-        i = i + 1;
-        %plotToolbar(G, I)
-        %F(i) = getframe;
-    end
-    %figure
-    %movie(F, 1, 2)
+
     
-    if (i==iterations)
-        dispif(true, 'Jacobi did not converge after  %d iterations\n', i);
-    end
-    
-    basis = struct('R', R, 'B', I, 'type', 'rsb');
 end
 
 

@@ -20,15 +20,15 @@ int main(int argc, char* argv[])
 	int RANK, SIZE, TAG = 50;
 	int i, j, k, l;
 	double start, start2, start3; 		// timing variable
-	double T1, T2, T3, T4;							// timing variable
+	double T1 = 0, T2 = 0, T3 = 0, T4 = 0;							// timing variable
 
 	int check_convergence, localDone, globalDone;		// check convergence variables
-
+	bool underTol, underTol_G;
 	Options opt;
-	opt.maxIter = 1000;
+	opt.maxIter = 500;
 	opt.tolerance = -1;
-	opt.checkTol = 1000;
-
+	opt.checkTol = 10;
+	opt.reNorm = 100;
 
 	Grid grid;
 	Matrix mat;
@@ -48,79 +48,82 @@ int main(int argc, char* argv[])
 	if(readBasisOperator(&grid, initBasis, infile)) return 1;
 
 	// *************************get OMP solution******************************* //
-
-	if (RANK==0){
-		start = MPI_Wtime();
+	if (RANK==0 ){
 		ompSolution = new double[grid.n_basis];
+		start = MPI_Wtime();
 		for ( i = 0; i<grid.n_basis; i++){ ompSolution[i] = initBasis[i]; }
-		ompBasis(grid, mat, ompSolution, opt);
-		cout<<MPI_Wtime()-start<<endl;
+		ompBasis(grid, mat, ompSolution, opt, T3, T4);
+		T1=MPI_Wtime()-start;
 	}
 
-
 	// *******************MPI_global_G_2.0 starts****************************** //
+	MPI_Barrier(MPI_COMM_WORLD);
 	start = MPI_Wtime();
 
-	// Create the basisDistr vector.
 	int basisDistr[SIZE+1];
 	for ( i = 0; i< SIZE; i++) basisDistr[i] = threadStart(i, SIZE, grid.M);
 	basisDistr[SIZE] = grid.M;
-
 	int firstBasis = basisDistr[RANK];					// Number of the first basis function
 	int nBasis = basisDistr[RANK+1]-firstBasis;	// Number of basis functions on the current thread
 
-	// Create Basis datastructures.
 	Basis  basisArray[nBasis];
 	for ( i = 0 ; i<nBasis; i++){
-		basisArray[i].makeBasis(grid, mat, initBasis, firstBasis+i, opt);
+		basisArray[i].makeBasis(grid, mat, initBasis, firstBasis+i, opt, underTol);
 		basisArray[i].makeLocalMapping();
 	}
 
-	// Create the TypeTwo structure.
 	TypeTwo typeTwo(grid, basisArray, nBasis, SIZE, RANK, basisDistr);
 	typeTwo.setupSending();
 
+	MPI_Barrier(MPI_COMM_WORLD);
+	T2=MPI_Wtime()-start;
 
-	// Iteration
+	start = MPI_Wtime();
 	for ( i = 1; i<=opt.maxIter; i++){
 		check_convergence = (i % opt.checkTol) == 0 && opt.tolerance > 0;
-		localDone = check_convergence;
-
-		for ( j = 0; j<nBasis; j++){
-			if(!basisArray[j].jacobiProduct(check_convergence) && localDone == true) localDone = false;
+		if (!check_convergence){
+			for (int j = 0; j<nBasis; j++){ basisArray[j].jacobiProduct(); }
+			typeTwo.localSum();
+			if (SIZE!=1) typeTwo.sendAndRecieve();
+			typeTwo.TTupdate();
+			if (i%opt.reNorm == 0) renormalize(basisArray,nBasis,RANK,SIZE,grid.N);
 		}
-		typeTwo.localSum();
-		typeTwo.sendAndRecieve();
-		typeTwo.TTupdate();
-
-		if (i%opt.reNorm == 0) renormalize(basisArray,nBasis,RANK,SIZE,grid.N);
-
-		if (check_convergence){
+		else {
+			underTol = true;
+			for (int j = 0; j<nBasis; j++){ basisArray[j].jacobiProduct_ConvCheck(); }
+			typeTwo.localSum();
+			typeTwo.sendAndRecieve();
+			typeTwo.TTupdate();
+			if (i%opt.reNorm == 0) renormalize(basisArray,nBasis,RANK,SIZE,grid.N);
 			if (SIZE!=1){
-				MPI_Allreduce(&localDone, &globalDone, 1, MPI_INT, MPI_LAND, MPI_COMM_WORLD);
-				MPI_Barrier(MPI_COMM_WORLD);
-				if (globalDone){
+				MPI_Allreduce(&underTol, &underTol_G, 1, MPI_INT, MPI_LAND, MPI_COMM_WORLD);
+				if (underTol_G){
 					//if (RANK==0) cout<<"limSend_2.0 converged after "<<i<<" iterations."<<endl;
 					break;
 				}
 			}
-			else if (localDone){
+			else if (underTol){
 				//cout<<"limSend_2.0 converged after "<<i<<" iterations."<<endl;
 				break;
 			}
 		}
-
 		if (i == opt.maxIter && RANK==0){
 			//cout<<"limSend_2.0 did not converge after "<<i<<" iterations."<<endl;
 		}
 	}
 
-	if (RANK==0)cout<<MPI_Wtime()-start<<endl<<endl;
+	MPI_Barrier(MPI_COMM_WORLD);
+	T3=MPI_Wtime()-start;
+
 
 	// ********Gather basis functions on thread 0 and check discrepancy******** //
 	if (RANK==0) limSendSolution = new double[grid.n_basis];
 	gatherBasis(grid, basisDistr, basisArray,  RANK,  SIZE, limSendSolution);
 	if (RANK==0) computeDiscrepancy( grid, limSendSolution, ompSolution);
+
+	if (RANK==0){
+		cout<<setprecision(6)<<T1<<"\t"<<T2<<"\t"<<T3<<endl;
+	}
 
 
 	delete [] initBasis;

@@ -4,6 +4,7 @@
 #include <iomanip>
 #include <map>
 #include <iostream>
+#include <math.h>
 using namespace std;
 
 /* ************************************************************************** */
@@ -111,7 +112,6 @@ void Basis::jacobiProduct(){
     if (celltypes[i]==0) values[i]-=omega*update[i];
   }
 }
-
 
 
 /* ************************************************************************** */

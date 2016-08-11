@@ -1,2 +1,0 @@
-/usr/bin/ar cr libTT.a  CMakeFiles/TT.dir/TypeTwo.cpp.o
-/usr/bin/ranlib libTT.a

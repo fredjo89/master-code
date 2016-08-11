@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/shomeb/f/fredjoha/Desktop/master-code/limSend_3.5/data_defs.cpp
+data_defs.h
+/home/shomeb/f/fredjoha/Desktop/master-code/limSend_3.5/data_defs.h
+iostream
+-
+iomanip
+-
+
+/home/shomeb/f/fredjoha/Desktop/master-code/limSend_3.5/data_defs.h
+iostream
+-
+vector
+-
+map
+-
+

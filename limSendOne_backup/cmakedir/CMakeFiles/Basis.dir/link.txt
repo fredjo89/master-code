@@ -1,2 +1,0 @@
-/usr/bin/ar cr libBasis.a  CMakeFiles/Basis.dir/Basis.cpp.o
-/usr/bin/ranlib libBasis.a

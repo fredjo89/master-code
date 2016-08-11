@@ -161,12 +161,12 @@ clean: CMakeFiles/dataDefs.dir/clean
 # Target rules for target CMakeFiles/main.dir
 
 # All Build rule for target.
-CMakeFiles/main.dir/all: CMakeFiles/dataDefs.dir/all
-CMakeFiles/main.dir/all: CMakeFiles/read.dir/all
 CMakeFiles/main.dir/all: CMakeFiles/TT.dir/all
-CMakeFiles/main.dir/all: CMakeFiles/utils.dir/all
-CMakeFiles/main.dir/all: CMakeFiles/omp.dir/all
 CMakeFiles/main.dir/all: CMakeFiles/Basis.dir/all
+CMakeFiles/main.dir/all: CMakeFiles/dataDefs.dir/all
+CMakeFiles/main.dir/all: CMakeFiles/omp.dir/all
+CMakeFiles/main.dir/all: CMakeFiles/utils.dir/all
+CMakeFiles/main.dir/all: CMakeFiles/read.dir/all
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/depend
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/shomeb/f/fredjoha/Desktop/master-code/limSend_2.0/cmakedir/CMakeFiles  4

@@ -1,2 +1,0 @@
-/home/shomeb/f/fredjoha/Desktop/master-code/comm_learning/cmakedir/CMakeFiles/main.dir
-/home/shomeb/f/fredjoha/Desktop/master-code/comm_learning/cmakedir/CMakeFiles/main2.dir

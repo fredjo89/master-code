@@ -1,0 +1,8 @@
+
+MRST functions:
+-cartGrid
+-makeRock
+-plotCellData
+-outlineCoarseGrid
+- computeGeometry;
+

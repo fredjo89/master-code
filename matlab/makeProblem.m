@@ -1,12 +1,13 @@
 function [ G, rock, p, testcase ] = makeProblem()
 % setup case
 
+
 testcase = 'custom';
 
 switch lower(testcase)
     case 'custom'
-        temp1 = 200; 
-        temp2 = 12; 
+        temp1 = 100; 
+        temp2 = 10; 
         
         [nx ny] = deal(temp1); 
         theBasisDesider = ceil(temp1/temp2);
@@ -50,7 +51,7 @@ switch lower(testcase)
         G = mcomputeGeometry(G);
     case 'spe10'
         mrstModule add spe10
-        layers = 1:85;
+        layers = 85:85;
         [G, ~, rock] = SPE10_setup(layers);
         p = partitionUI(G, [6, 11, ceil(G.cartDims(3)./5)]);
     otherwise

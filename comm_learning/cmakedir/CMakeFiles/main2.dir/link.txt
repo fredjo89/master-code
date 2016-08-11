@@ -1,1 +1,0 @@
-/usr/bin/c++   -O3 -DNDEBUG    CMakeFiles/main2.dir/main2.cpp.o  -o main2 -rdynamic -lmpi_cxx -lmpi -ldl -lhwloc 

@@ -1,0 +1,93 @@
+#!/bin/bash
+# My first script
+
+#  Compilers: -std=c++11 or -std=gnu++11
+
+hetro="/home/shomeb/f/fredjoha/Desktop/master-code/MRST/mrst-core/examples/data/tmp/basis_hetero/input/"
+big="/home/shomeb/f/fredjoha/Desktop/master-code/MRST/mrst-core/examples/data/tmp/basis_big/input/"
+custom="/home/shomeb/f/fredjoha/Desktop/master-code/checkout-mrst/mrst-bitbucket/mrst-core/examples/data/tmp/basis_custom/input/"
+
+spe10="/home/shomeb/f/fredjoha/Desktop/master-code/checkout-mrst/mrst-bitbucket/mrst-core/examples/data/tmp/basis_spe10/input/"
+
+
+
+custom_40="/home/shomeb/f/fredjoha/Desktop/master-code/MRST/mrst-core/examples/data/tmp/basis_custom_40/input/"
+custom_80="/home/shomeb/f/fredjoha/Desktop/master-code/MRST/mrst-core/examples/data/tmp/basis_custom_80/input/"
+custom_120="/home/shomeb/f/fredjoha/Desktop/master-code/MRST/mrst-core/examples/data/tmp/basis_custom_120/input/"
+custom_160="/home/shomeb/f/fredjoha/Desktop/master-code/MRST/mrst-core/examples/data/tmp/basis_custom_160/input/"
+custom_200="/home/shomeb/f/fredjoha/Desktop/master-code/MRST/mrst-core/examples/data/tmp/basis_custom_200/input/"
+custom_220="/home/shomeb/f/fredjoha/Desktop/master-code/MRST/mrst-core/examples/data/tmp/basis_custom_220/input/"
+FN=$custom
+            
+echo "Compiling Code!"
+cd cmakedir
+make
+cd ..
+echo "Running Code!"
+
+
+#valgrind ./cmakedir/main $custom
+#valgrind mpirun -n 4  ./cmakedir/main $custom
+#valgrind --leak-check=yes ./cmakedir/main $custom 
+
+
+
+#valgrind --leak-check=yes mpirun -n 2 ./cmakedir/main $custom
+
+mpirun -n 1  ./cmakedir/main $spe10
+mpirun -n 2 ./cmakedir/main $spe10
+mpirun -n 3 ./cmakedir/main $spe10
+mpirun -n 4 ./cmakedir/main $spe10
+
+#mpirun -hostfile my_hostfile ./cmakedir/main $custom
+
+
+
+#mpirun -n 20 ./main $custom
+
+#mpirun -n 1 ./main $spe10
+#mpirun -n 2 ./main $spe10
+#mpirun -n 3 ./main $spe10
+#mpirun -n 4 ./cmakedir/main $spe10
+
+
+
+#mpirun -n 1 ./main $custom_80
+#mpirun -n 2 ./main $custom_80
+#mpirun -n 3 ./main $custom_80
+#mpirun -n 4 ./main $custom_80
+
+#mpirun -n 1 ./main $custom_120
+#mpirun -n 2 ./main $custom_120
+#mpirun -n 3 ./main $custom_120
+#mpirun -n 4 ./main $custom_120
+
+#mpirun -n 1 ./main $custom_160
+#mpirun -n 2 ./main $custom_160
+#mpirun -n 3 ./main $custom_160
+#mpirun -n 4 ./main $custom_160
+
+#mpirun -n 1 ./main $custom_200
+#mpirun -n 2 ./main $custom_200
+#mpirun -n 3 ./main $custom_200
+#mpirun -n 4 ./main $custom_200
+
+#mpirun -n 1 ./main $custom_220
+#mpirun -n 2 ./main $custom_220
+#mpirun -n 3 ./main $custom_220
+#mpirun -n 4 ./main $custom_220
+
+
+
+#mpirun -hostfile my_hostfile  ./main $FN
+#mpirun -n 5 ./main $FN
+#mpirun -n 6 ./main $FN
+#mpirun -n 7 ./main $FN
+#mpirun -n 8 ./main $FN
+#mpirun -n 9 ./main $FN
+#mpirun -n 10 ./main $FN
+
+
+
+# delete all test-problems:
+# rm -rf /home/shomeb/f/fredjoha/Desktop/master-code/MRST/mrst-core/examples/data/tmp/

@@ -1,6 +1,0 @@
-/home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G/cmakedir/CMakeFiles/TT.dir
-/home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G/cmakedir/CMakeFiles/dataDefs.dir
-/home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G/cmakedir/CMakeFiles/main.dir
-/home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G/cmakedir/CMakeFiles/omp.dir
-/home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G/cmakedir/CMakeFiles/read.dir
-/home/shomeb/f/fredjoha/Desktop/master-code/backup_MPI_global_G/cmakedir/CMakeFiles/utils.dir

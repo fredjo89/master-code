@@ -35,18 +35,11 @@ function [basis, i] = getOrderedGSBasis(CG, A, iterations, tol, w)
             end
         end
        
-    
-        % remove out of bounds
         update = update.*interactionMap;
-             
-        % Normalize
         update = bsxfun(@rdivide, update, sum(update, 2));
         
-        % Get difference betweel last and current basis functions
         diff = max(max(abs(update-I)));
-        
         I = update; 
-        
         
         if (diff < tol)
             i = i + 1;
@@ -58,14 +51,8 @@ function [basis, i] = getOrderedGSBasis(CG, A, iterations, tol, w)
     
      
     
-    if (i==iterations)
-        dispif(true, 'Ordered GS DID NOT converged after %d iterations\n', i);
-    end
-    
 
-    
-
-
+    dispif(i==iterations, 'Ordered GS DID NOT converged after %d iterations\n', i);
     basis = struct('R', R, 'B', I, 'type', 'rsb');
 end
 

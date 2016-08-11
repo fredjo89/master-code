@@ -33,7 +33,7 @@ int main(int argc, char* argv[])
 	if(readBasisOperator(&grid, globalBasis, infile)) return 1;
 
 	Options opt;
-	opt.maxIter = 10000;
+	opt.maxIter = 100;
 	opt.tolerance = -1;
 	double start; // timing variable
 
