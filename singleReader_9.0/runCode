@@ -1,0 +1,40 @@
+#!/bin/bash
+# My first script
+
+#  Compilers: -std=c++11 or -std=gnu++11
+
+hetro="/home/shomeb/f/fredjoha/Desktop/master-code/MRST/mrst-core/examples/data/tmp/basis_hetero/input/"
+big="/home/shomeb/f/fredjoha/Desktop/master-code/MRST/mrst-core/examples/data/tmp/basis_big/input/"
+custom="/home/shomeb/f/fredjoha/Desktop/master-code/checkout-mrst/mrst-bitbucket/mrst-core/examples/data/tmp/basis_custom/input/"
+
+rectangle="/home/shomeb/f/fredjoha/Desktop/master-code/checkout-mrst/mrst-bitbucket/mrst-core/examples/data/tmp/basis_rectangle/input/"
+
+spe10="/home/shomeb/f/fredjoha/Desktop/master-code/checkout-mrst/mrst-bitbucket/mrst-core/examples/data/tmp/basis_spe10/input/"
+
+unstructured="/home/shomeb/f/fredjoha/Desktop/master-code/checkout-mrst/mrst-bitbucket/mrst-core/examples/data/tmp/basis_unstructured/input/"
+
+echo "Compiling Code!"
+cd cmakedir
+make
+cd ..
+echo "Running Code!"
+
+
+
+#mpirun -n 1  ./cmakedir/main $spe10
+#mpirun -n 3 ./cmakedir/main $custom
+mpirun -n 4 ./cmakedir/main $spe10
+
+
+
+
+
+
+
+
+
+
+
+
+# delete all test-problems:
+# rm -rf /home/shomeb/f/fredjoha/Desktop/master-code/MRST/mrst-core/examples/data/tmp/

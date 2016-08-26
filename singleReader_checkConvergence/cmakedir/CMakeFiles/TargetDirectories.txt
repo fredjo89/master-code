@@ -1,0 +1,7 @@
+/home/shomeb/f/fredjoha/Desktop/master-code/singleReader_checkConvergence/cmakedir/CMakeFiles/dataDefs.dir
+/home/shomeb/f/fredjoha/Desktop/master-code/singleReader_checkConvergence/cmakedir/CMakeFiles/distr.dir
+/home/shomeb/f/fredjoha/Desktop/master-code/singleReader_checkConvergence/cmakedir/CMakeFiles/jacobi.dir
+/home/shomeb/f/fredjoha/Desktop/master-code/singleReader_checkConvergence/cmakedir/CMakeFiles/main.dir
+/home/shomeb/f/fredjoha/Desktop/master-code/singleReader_checkConvergence/cmakedir/CMakeFiles/omp.dir
+/home/shomeb/f/fredjoha/Desktop/master-code/singleReader_checkConvergence/cmakedir/CMakeFiles/read.dir
+/home/shomeb/f/fredjoha/Desktop/master-code/singleReader_checkConvergence/cmakedir/CMakeFiles/utils.dir

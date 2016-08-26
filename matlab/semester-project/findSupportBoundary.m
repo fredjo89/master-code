@@ -1,4 +1,7 @@
 function [ boundary ] = findSupportBoundary( currentBasis, nx, ny )
+
+currentBasis
+
 for i=1:nx*ny
     boundary(i) = 0; 
     if ~any(abs(currentBasis-i)<1e-10)
@@ -39,11 +42,11 @@ for i=1:nx*ny
               boundary(i)=10;
           end
         elseif west
-            if (  any(abs(currentBasis-i+nx)<1e-10)||any(abs(currentBasis-i-nx)<1e-10) )
+            if (  any(abs(currentBasis-i+1)<1e-10) )
               boundary(i)=1;
           end
         elseif east 
-            if ( any(abs(currentBasis-i+nx)<1e-10)||any(abs(currentBasis-i-nx)<1e-10) )
+            if ( any(abs(currentBasis-i-1)<1e-10) )
               boundary(i)=1;
           end
         elseif south

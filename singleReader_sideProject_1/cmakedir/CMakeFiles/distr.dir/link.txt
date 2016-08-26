@@ -1,0 +1,2 @@
+/usr/bin/ar cr libdistr.a  CMakeFiles/distr.dir/distribution.cpp.o
+/usr/bin/ranlib libdistr.a

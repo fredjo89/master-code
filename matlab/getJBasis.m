@@ -19,9 +19,10 @@ function [I, error] = getJBasis(CG, A, iterations,tol, w)
     D_inv = spdiags(1./D, 0, n, n);
     M = D_inv*A;
    
-    
     error_init = full(sum(sum(abs(A*I))));
     error(1) =  1;
+    
+    tic
     
     for  i =1:iterations
         
@@ -33,8 +34,6 @@ function [I, error] = getJBasis(CG, A, iterations,tol, w)
         I = I + w*update;
         I = bsxfun(@rdivide, I, sum(I, 2));
         
-        
-
         error(i+1) = sum(sum(abs(A*I)))/error_init;
         
         if abs(error(i+1)-error(i))<tol
@@ -49,8 +48,8 @@ function [I, error] = getJBasis(CG, A, iterations,tol, w)
         
         if rem(i,1000)==0
             disp([num2str(i),', errordiff: ',num2str(abs(error(i+1)-error(i))) ]);
+            toc
         end
-        
     end
 
 

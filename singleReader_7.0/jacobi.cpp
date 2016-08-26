@@ -70,6 +70,9 @@ void makeMapping(Grid& grid, Matrix& mat){
 
 // ********************************************************************************************** //
 void makeBInfo_local(Grid& grid, Node& node, BInfo& B){
+
+    if (node.weight == 0) return;
+
     int max = grid.support[0];
     int min = grid.support[0];
     for (int i = 1; i < grid.n_sup; i++ ){
@@ -158,6 +161,8 @@ void makeBInfo_local(Grid& grid, Node& node, BInfo& B){
 
 // ********************************************************************************************** //
 void makeBInfo_sending(Grid& grid, BInfo& B, int RANK){
+    if (grid.n_sup == 0) return;
+
     // 1. Initial declarations
     B.statSend = new MPI_Status[B.n_edges]();
     B.statRecv = new MPI_Status[B.n_edges]();
@@ -292,20 +297,24 @@ void localSum(Grid& grid, BInfo& B){
 }
 
 // ********************************************************************************************** //
-void sendAndRecieve(Grid& grid, BInfo& B){
-    for (int i = 0; i<B.n_edges; i++){
-        MPI_Isend(B.sums, B.n_sendCells, MPI_DOUBLE,
-        B.edges[i], 666,MPI_COMM_WORLD, &B.send_request[i]);
-        MPI_Irecv(&B.recvBuff[B.recvBuff_Offsets[i]],
-        B.recvBuff_Offsets[i+1]-B.recvBuff_Offsets[i], MPI_DOUBLE,
-        B.edges[i], 666, MPI_COMM_WORLD, &B.recv_request[i]);
+void sendAndRecieve(BInfo& B){
+    for (int i = 0; i < B.n_edges; i++){
+        MPI_Isend(
+            B.sums, B.n_sendCells, MPI_DOUBLE,
+            B.edges[i], 666, MPI_COMM_WORLD, &B.send_request[i]
+        );
+        MPI_Irecv(
+            &B.recvBuff[ B.recvBuff_Offsets[i] ],
+        B.recvBuff_Offsets[i+1] - B.recvBuff_Offsets[i],
+        MPI_DOUBLE, B.edges[i], 666, MPI_COMM_WORLD, &B.recv_request[i]
+    );
     }
     MPI_Waitall(B.n_edges, B.send_request, B.statSend);
     MPI_Waitall(B.n_edges, B.recv_request, B.statRecv);
 
-    for (int i = 0; i<B.n_sendCells; i++){
-        for (int j=B.recvIndices_Offsets[i]; j<B.recvIndices_Offsets[i+1]; j++ ){
-            B.sums[i] += B.recvBuff[B.recvIndices[j]];
+    for (int i = 0; i < B.n_sendCells; i++){
+        for (int j = B.recvIndices_Offsets[i]; j < B.recvIndices_Offsets[i+1]; j++ ){
+            B.sums[i] += B.recvBuff[ B.recvIndices[j] ];
         }
     }
 }

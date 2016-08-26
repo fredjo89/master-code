@@ -248,6 +248,8 @@ void makeFineGraph(Grid& grid, H_data& H, Graph& f_graph){
         f_graph.edgeWeights[i] = edgeWghts_temp[i];
     }
 
+    print(f_graph);
+
     delete[] edgeMap;
     delete[] edgeMap_2;
     delete[] edgeWghts_temp;
@@ -323,8 +325,8 @@ void METIS_partition(Graph& graph, Graph& f_graph){
     options[METIS_OPTION_CONTIG] = 1;
     options[METIS_OPTION_MINCONN] = 1;
 
-    METIS_PartGraphRecursive(
-    //METIS_PartGraphKway(
+    //METIS_PartGraphRecursive(
+    METIS_PartGraphKway(
         &graph.M,
         &ncon,
         f_graph.edgeOffsets,
@@ -435,6 +437,9 @@ void setupNodes(Graph& graph, Node& node, int& RANK){
         node.sendCells = new int[node.n_sendCells];
         for (int i = 0; i<node.n_edges; i++) node.edges[i] = graph.edges[i];
         for (int i = 0; i<node.n_sendCells; i++) node.sendCells[i] = graph.sendCells[i];
+
+        delete[] graph.package;
+        graph.package = NULL;
     }
     else{
         int* buffer = new int[5];
@@ -590,7 +595,7 @@ Graph& graph, Node& node){
         g_mat.mat_index = NULL;
         g_mat.mat_coef = NULL;
     }
-    else{
+    else if (node.weight != 0){
         MPI_Status* status = new MPI_Status[3]();
         l_grid.M = node.n_basis;
         l_grid.n_sup = node.weight;
@@ -706,19 +711,28 @@ void gatherBasis(Grid& l_grid, Grid& g_grid, Graph& graph, int RANK, int SIZE){
     if(RANK==0){
         g_grid.basis = new double[g_grid.n_sup];
         double* recvBuff = new double[g_grid.n_sup];
-        for (int i = 0; i < graph.nodeWeights[0]; i++){ recvBuff[i] = l_grid.basis[i]; }
+
+        for (int i = 0; i < graph.nodeWeights[0]; i++){
+            recvBuff[i] = l_grid.basis[i];
+        }
+
         MPI_Status status;
         int offsets = 0;
         for (int i = 1; i<SIZE; i++){
             offsets+=graph.nodeWeights[i-1];
-            MPI_Recv(&recvBuff[offsets], graph.nodeWeights[i], MPI_DOUBLE, i, 666, MPI_COMM_WORLD,
-            &status);
+
+            if (graph.nodeWeights[i] != 0){
+                MPI_Recv(&recvBuff[offsets], graph.nodeWeights[i], MPI_DOUBLE, i, 666,
+                MPI_COMM_WORLD, &status);
+            }
         }
+
         int* ordOffsets = new int[ g_grid.M + 1 ]; ordOffsets[0] = 0;
         for (int i = 0; i < g_grid.M; i++){
             ordOffsets[i+1] = ordOffsets[i] +
             g_grid.offsets[graph.order[i]+1] - g_grid.offsets[graph.order[i]];
         }
+
         for (int i = 0; i < g_grid.M; i++){
             int start = g_grid.offsets[ graph.order[i] ];
             int k = 0;
@@ -727,9 +741,11 @@ void gatherBasis(Grid& l_grid, Grid& g_grid, Graph& graph, int RANK, int SIZE){
                 k++;
             }
         }
-        delete[] recvBuff; delete[] ordOffsets;
+
+        delete[] recvBuff;
+        delete[] ordOffsets;
     }
-    else{
+    else if (l_grid.n_sup != -1){
         MPI_Send(l_grid.basis, l_grid.n_sup, MPI_DOUBLE, 0, 666, MPI_COMM_WORLD);
     }
 }

@@ -17,6 +17,6 @@ void jacobi(Grid& grid, Matrix& mat, double& omega);
 
 void localSum(Grid& grid, BInfo& B);
 
-void sendAndRecieve(Grid& grid, BInfo& B);
+void sendAndRecieve(BInfo& B);
 
 void BNormalize(Grid& grid, BInfo& B);

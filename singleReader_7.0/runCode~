@@ -7,6 +7,8 @@ hetro="/home/shomeb/f/fredjoha/Desktop/master-code/MRST/mrst-core/examples/data/
 big="/home/shomeb/f/fredjoha/Desktop/master-code/MRST/mrst-core/examples/data/tmp/basis_big/input/"
 custom="/home/shomeb/f/fredjoha/Desktop/master-code/checkout-mrst/mrst-bitbucket/mrst-core/examples/data/tmp/basis_custom/input/"
 
+rectangle="/home/shomeb/f/fredjoha/Desktop/master-code/checkout-mrst/mrst-bitbucket/mrst-core/examples/data/tmp/basis_rectangle/input/"
+
 spe10="/home/shomeb/f/fredjoha/Desktop/master-code/checkout-mrst/mrst-bitbucket/mrst-core/examples/data/tmp/basis_spe10/input/"
 
 
@@ -34,10 +36,14 @@ echo "Running Code!"
 
 #valgrind --leak-check=yes mpirun -n 2 ./cmakedir/main $custom
 
-mpirun -n 1  ./cmakedir/main $spe10
-mpirun -n 2 ./cmakedir/main $spe10
-mpirun -n 3 ./cmakedir/main $spe10
-mpirun -n 4 ./cmakedir/main $spe10
+#mpirun -n 1  ./cmakedir/main $spe10
+#mpirun -n 2 ./cmakedir/main $spe10
+#mpirun -n 3 ./cmakedir/main $spe10
+#mpirun -n 3 ./cmakedir/main $spe10
+
+
+mpirun -n 28 ./cmakedir/main $rectangle
+
 
 #mpirun -hostfile my_hostfile ./cmakedir/main $custom
 

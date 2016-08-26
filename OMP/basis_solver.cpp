@@ -12,14 +12,16 @@
 #define LOOPCHUNK 100
 // How often we check convergence
 #define CHECKITS 25
-// Renormalize globally every now and then due to rounding errors (only 
+// Renormalize globally every now and then due to rounding errors (only
 // applicable for large number of iterations)
 #define NORM_ITER 100
 // Macro for time taking
 #define TIME_NOW std::chrono::high_resolution_clock::now();
-#define _OPENMP_NOFORCE_MANIFEST 
+#define _OPENMP_NOFORCE_MANIFEST
 #define INTERACTION_SORTED 1
 int i, j, k, l;
+
+
 
 void getBasis(Grid * grid, ConnMatrix * mat, double * basis, double tol, int N, double relax) {
 	/* Set up matrix operators */
@@ -36,11 +38,11 @@ void getBasis(Grid * grid, ConnMatrix * mat, double * basis, double tol, int N, 
 
 
 	auto t3 = TIME_NOW;
-	std::cout << "Basis generation done in "
+	std::cout << "Basis generation done in (ms):\t"
 		<< std::chrono::duration_cast<std::chrono::milliseconds>(t3 - t1).count()
-		<< " ms"  << std::endl;
-	std::cout << "---- Mapping generation: " << std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count() << "ms" << std::endl;;
-	std::cout << "---- Basis functions   : " << std::chrono::duration_cast<std::chrono::milliseconds>(t3 - t2).count() << "ms" << std::endl;;
+		<< std::endl;
+	std::cout << "---- Mapping generation (ms):\t" << std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count() <<  std::endl;;
+	std::cout << "---- Basis functions(ms):\t" << std::chrono::duration_cast<std::chrono::milliseconds>(t3 - t2).count() << std::endl;;
 	#pragma omp barrier
 }
 
@@ -64,7 +66,7 @@ int computeBasis(Grid * grid, ConnMatrix * mat, double * __restrict__ basis, dou
 	std::cout << "Starting smoothing iterations..." << std::endl;;
 	// Iterate up to max iterations
 	int iter = 0;
-	
+
 	while(iter < maxiter){
         // We check convergence every CHECKITS and as long as we have not converged.
 		bool check_convergence = (iter % CHECKITS) == 0 && iter > 0 && tol > 0;
@@ -193,7 +195,7 @@ int readInfo(Grid * grid, std::string file_path) {
 		infofile >> (*grid).offsets[i];
 		i++;
 	}
-	
+
 	n_basis = (*grid).offsets[nc];
 	// Read support
 	(*grid).support = new int[n_basis];
@@ -321,7 +323,7 @@ void setupCoarseMapping(Grid * grid, ConnMatrix * mat){
 					}
 				}
 				if(!done && grid->celltypes[j] != 1){
-					printf("Error! %d: %d (mapping cell %d to %d) with category %d...\n", coarseIx, j, c, c_n, grid->celltypes[j]);
+					//printf("Error! %d: %d (mapping cell %d to %d) with category %d...\n", coarseIx, j, c, c_n, grid->celltypes[j]);
 				}
 
 				if(done){
@@ -359,4 +361,3 @@ int openFlatFile(std::string file_path, std::ifstream * file) {
 	}
 	return 0;
 }
-

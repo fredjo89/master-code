@@ -1,7 +1,9 @@
-
 // -The array celltypes in grid now has the name boundary and is a boolean instead of an int array.
 // - The struct TypeTwo is now named BInfo, and its variable is named B instead of TT
-// - The function TTnormalize is now named BNormalize. 
+// - The function TTnormalize is now named BNormalize.
+// - Some small changes here and there. EG;
+//		- Uneccecary input of data into functions removed. 
+//		- Handles partitions that does not use all processors (i.e processors with vertex weight 0).
 
 #include "data_defs.h"
 #include "readFromFile.h"
@@ -30,7 +32,7 @@ int main(int argc, char* argv[])
 	double start1, start2, start3;
 	double t0 = 0, t1 = 0, t2 = 0, t3 = 0, t4 = 0, t5 = 0, t6 = 0, t7 = 0, t8 = 0;
 	Options opt;
-	opt.maxIter = 1000;
+	opt.maxIter = 100;
 	opt.tolerance = -1;
 	opt.checkTol = 1;
 	Grid g_grid, l_grid;
@@ -88,38 +90,53 @@ int main(int argc, char* argv[])
 			makeCoarseGraph(g_grid, g_mat, SIZE, graph);
 			setupNodes(graph,  node,  RANK);
 			distributeProblem(g_grid, l_grid, g_mat, l_mat, graph, node);
+
+
 		}
 		else{
 			setupNodes(graph,  node,  RANK);
 			distributeProblem(g_grid, l_grid, g_mat, l_mat, graph, node);
 		}
 
+
+
 		makeMapping(l_grid, l_mat);
 		makeBInfo_local(l_grid, node, B);
 		makeBInfo_sending(l_grid, B, RANK);
 
+		start1 = MPI_Wtime();
 		for (int i = 0; i<opt.maxIter; i++){
-			start1 = MPI_Wtime();
 			jacobi(l_grid, l_mat,  opt.omega);
-			t1 += MPI_Wtime() - start1;
 			localSum(l_grid, B);
-			sendAndRecieve(l_grid, B);
+			sendAndRecieve(B);
 			BNormalize(l_grid, B);
 
 		}
 
 
+		t1 = 0;
+		t1 += MPI_Wtime() - start1;
+
+
 		gatherBasis(l_grid, g_grid, graph, RANK, SIZE);
+
 		if (RANK==0){
 			computeDiscrepancy(g_grid, ompSol);
 		}
 
+
 	}
 
-	//if (RANK==0 && SIZE!=1 ) writeBasisDistr(graph);
+
+
+	if (RANK==0 && SIZE!=1 ) writeBasisDistr(graph);
 	//if (RANK==0 ) writeBasis(g_grid);
 
 	if (RANK==0) cout<<t1<<endl;
+
+	//if (RANK==0) print(graph);
+
+
 
 
 	// Wrapup************************************************************************************ //

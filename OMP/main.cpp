@@ -16,6 +16,7 @@
 
 #include <cstring>
 
+
 int main(int argc, char* argv[])
 {
 	if(argc != 2){
@@ -32,6 +33,7 @@ int main(int argc, char* argv[])
 int flatFileBasis(std::string fn) {
 	Grid grid;
 	ConnMatrix mat;
+
 
 	std::string infile, outfile;
 	#ifdef _WIN32
@@ -52,7 +54,8 @@ int flatFileBasis(std::string fn) {
 	mat.loc_index = new int[grid.n_basis*mat.n_conn]();
 	mat.loc_conn = new double[grid.n_basis*mat.n_conn]();
 
-	getBasis(&grid, &mat, basis, -1, 100, 0.66);
+
+	getBasis(&grid, &mat, basis, -1, 1000, 0.66);
 	// Write output
 	writeBasisOperator(&grid, outfile, basis);
 
@@ -138,7 +141,7 @@ void mexFunction(
     int given_threads = mxGetScalar(prhs[8]);
     int max_threads = std::min(given_threads, omp_get_num_procs());
 
-    
+
 	plhs[0] = mxCreateDoubleMatrix((mwSize)grid.n_basis, (mwSize)1, mxREAL);
 	basis = (double *)mxGetData(plhs[0]);
 
@@ -149,7 +152,7 @@ void mexFunction(
 	printf("Problem has %d equations with up to %d connections and support in %d cells total.\n", mat.n_i, mat.n_conn, grid.n_basis);
     printf("Max number of threads: %d\n", max_threads);
     omp_set_num_threads(max_threads);
-	
+
 	mat.loc_index = new int[grid.n_basis*mat.n_conn];
 	mat.loc_conn = new double[grid.n_basis*mat.n_conn];
 
@@ -197,7 +200,7 @@ void buildMatrixFromMxSparse(ConnMatrix * mat, const mxArray * A) {
 			mat->j_index[i*n_el + ctr] = irs[j];
 		    ctr++;
 		}
-		
+
 	}
 	// Scale by missing diagonal
 	for (int i = 0; i < m; i++) {

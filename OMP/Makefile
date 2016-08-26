@@ -1,7 +1,9 @@
   # the compiler: gcc for C program, define as g++ for C++
   CC = g++
   CFLAGS  = -g -Wall -std=c++11
-   EXTRAFLAGS = -fopenmp -O3 -march=native -mfpmath=sse
+   #EXTRAFLAGS = -fopenmp -O3 -march=native -mfpmath=sse
+   EXTRAFLAGS =  -O3 -march=native -mfpmath=sse
+
  # EXTRAFLAGS = 
    
   # the build target executable:

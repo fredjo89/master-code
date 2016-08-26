@@ -1,13 +1,12 @@
 function [ G, rock, p, testcase ] = makeProblem()
 % setup case
 
-
-testcase = 'custom';
+testcase = 'spe10';
 
 switch lower(testcase)
     case 'custom'
-        temp1 = 100; 
-        temp2 = 10; 
+        temp1 = 4; 
+        temp2 = 2; 
         
         [nx ny] = deal(temp1); 
         theBasisDesider = ceil(temp1/temp2);
@@ -15,6 +14,15 @@ switch lower(testcase)
         G = cartGrid([nx ny]);
         rock = makeRock(G, 1, 1);
         p = partitionUI(G, [cgxy, cgxy]);
+        
+        %plotCellData(G,rock.poro);
+        %outlineCoarseGrid(G,p,'r')
+    case 'rectangle'
+        nx = 28; 
+        ny = 20; 
+        G = cartGrid([nx ny]);
+        rock = makeRock(G, 1, 1);
+        p = partitionUI(G, [7, 4]);
         
         %plotCellData(G,rock.poro);
         %outlineCoarseGrid(G,p,'r')
@@ -51,9 +59,11 @@ switch lower(testcase)
         G = mcomputeGeometry(G);
     case 'spe10'
         mrstModule add spe10
-        layers = 85:85;
+        layers = 35:35;
         [G, ~, rock] = SPE10_setup(layers);
         p = partitionUI(G, [6, 11, ceil(G.cartDims(3)./5)]);
+        
+        %p = partitionUI(G, [15, 44, ceil(G.cartDims(3)./5) ]);
     otherwise
         error();
 end

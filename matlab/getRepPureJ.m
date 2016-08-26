@@ -21,16 +21,6 @@ function [basis, i] = getRepPureJ(CG, A, iterations, tol, w)
     I = controlVolumeRestriction(CG.partition)';
     
     
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
     D = diag(A);
     n = numel(D);
     D_inv = spdiags(1./D, 0, n, n);
@@ -40,7 +30,7 @@ function [basis, i] = getRepPureJ(CG, A, iterations, tol, w)
     tolOne = 10^(-8);
     tolTwo = -1; 
     
-    maxIT1 = 10000; 
+    maxIT1 = 1000; 
     maxIT2 = 1; 
     
     
@@ -51,6 +41,7 @@ function [basis, i] = getRepPureJ(CG, A, iterations, tol, w)
         j=j+1;
         i = 0;
         prevOne = I; 
+        
         while i < maxIT2
              i = i + 1;
             prevTwo = I; 

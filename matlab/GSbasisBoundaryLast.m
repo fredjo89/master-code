@@ -72,13 +72,11 @@ function [error, i] = GSbasisBoundaryLast(CG, A, iterations, w)
     
    
     
-    
-    
-    
-    
-    
     error_init = full(sum(sum(abs(A*I))));
     error(1) =  1;
+    
+    full(RHS)
+    
     
     for i = 1:iterations
         

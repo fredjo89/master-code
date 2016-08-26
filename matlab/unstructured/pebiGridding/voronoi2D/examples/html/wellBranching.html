@@ -1,0 +1,190 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>wellBranching</title><meta name="generator" content="MATLAB 8.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-04-22"><meta name="DC.source" content="wellBranching.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#1">Example 2</a></li><li><a href="#2">Set path to voronoi2D</a></li><li><a href="#3">Set well paths</a></li><li><a href="#4">Setting gridding parameters:</a></li><li><a href="#5">Create Grid</a></li><li><a href="#6">Plot composite grid</a></li><li><a href="#7">Set pebiGrid Parameters:</a></li><li><a href="#8">Generate grid</a></li><li><a href="#9">Plot pebiGrid</a></li></ul></div><h2>Example 2<a name="1"></a></h2><p>This script contains an example a well branching. It contains several well-intersections.</p><pre class="codeinput"><span class="comment">% Copyright (C) 2016 Runar Lie Berge. See COPYRIGHT.TXT for details.</span>
+
+
+<span class="comment">%close all; clear</span>
+</pre><h2>Set path to voronoi2D<a name="2"></a></h2><pre class="codeinput"><span class="comment">%addpath ../</span>
+</pre><h2>Set well paths<a name="3"></a></h2><p>voronoi2D store well as arrays in cells. Each row in an array correspond to a corner of the path.</p><pre class="codeinput">well = {[0.5,0.2; 0.5,0.3;0.47,0.4;0.4,0.5; 0.33,0.6;0.26,0.7], <span class="keyword">...</span>
+        [0.5,0.3;0.53,0.4;0.58,0.5],<span class="keyword">...</span>
+        [0.5,0.45;0.5,0.55;0.45,0.65;0.4,0.75;0.38,0.85],<span class="keyword">...</span>
+        [0.5,0.55;0.55,0.65;0.6,0.75;0.62,0.85]};
+
+<span class="comment">% We now plot the wells to see how they look like</span>
+figure(); hold <span class="string">on</span>
+subplot(1,3,1)
+plotLinePath(well,<span class="string">'color'</span>,<span class="string">'blue'</span>);
+axis <span class="string">equal</span> <span class="string">tight</span>
+axis ([0,1,0,1])
+title(<span class="string">'well paths'</span>)
+drawnow
+</pre><img vspace="5" hspace="5" src="wellBranching_01.png" alt=""> <h2>Setting gridding parameters:<a name="4"></a></h2><p>Before we call the gridding fuctions we set some parameters.</p><pre class="codeinput">gS  = 1/24;        <span class="comment">% The grid size</span>
+wGf = 0.25;        <span class="comment">% The relative size of well cells compared to gS</span>
+fGf = 0.5;         <span class="comment">% The relative size of fault cells compared to gS</span>
+nRs = 2;           <span class="comment">% Number of refinement steps towards the well</span>
+mLs = [0.1,0.05]'; <span class="comment">% This sets the distance from a well where each</span>
+                   <span class="comment">% each refinement step should start.</span>
+</pre><h2>Create Grid<a name="5"></a></h2><p>We can now create the composite Pebi grid:</p><pre class="codeinput">Gc = compositePebiGrid(gS, [1, 1], <span class="keyword">...</span>
+                       <span class="string">'wellLines'</span>, well, <span class="string">'wellGridFactor'</span>,wGf, <span class="keyword">...</span>
+                       <span class="string">'mlqtMaxLevel'</span>, nRs,<span class="string">'mlqtLevelSteps'</span>, mLs);
+</pre><pre class="codeoutput error">Undefined function or variable 'c'.
+
+Error in compositePebiGrid (line 152)
+c
+
+Error in wellBranching (line 43)
+Gc = compositePebiGrid(gS, [1, 1], ...
+</pre><h2>Plot composite grid<a name="6"></a></h2><pre class="codeinput"><span class="comment">%And plot it</span>
+subplot(1,3,2)
+plotGrid(Gc, <span class="string">'facecolor'</span>,<span class="string">'none'</span>)
+axis <span class="string">equal</span> <span class="string">tight</span>
+title(<span class="string">'compositePebiGrid(...)'</span>)
+drawnow
+</pre><h2>Set pebiGrid Parameters:<a name="7"></a></h2><p>We now use the other wrapper function to create a PEBI-grid using distmesh:</p><pre class="codeinput">eps = 1/12; <span class="comment">% This parameter defines the refinement around the wells. The</span>
+            <span class="comment">% cell size are ~gS - exp(-(distance from well)/eps);</span>
+</pre><h2>Generate grid<a name="8"></a></h2><p>distmesh will most likely converge in the maximum number of iterations. This is usually not a problem, since the grid most likely is good before the convergence requirement is met.</p><pre class="codeinput">Gdist = pebiGrid(1/24, [1, 1], <span class="string">'wellLines'</span>, well,  <span class="string">'wellGridFactor'</span>, 0.5^2, <span class="string">'wellRefinement'</span>, true, <span class="string">'epsilon'</span>,eps);
+</pre><h2>Plot pebiGrid<a name="9"></a></h2><pre class="codeinput">subplot(1,3,3)
+plotGrid(Gdist,<span class="string">'facecolor'</span>,<span class="string">'none'</span>)
+axis <span class="string">equal</span> <span class="string">tight</span>
+title(<span class="string">'pebiGrid(...)'</span>)
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2015a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Example 2
+% This script contains an example a well branching. It contains several 
+% well-intersections. 
+
+
+% Copyright (C) 2016 Runar Lie Berge. See COPYRIGHT.TXT for details.
+
+
+%close all; clear
+
+
+%% Set path to voronoi2D
+%addpath ../
+
+%% Set well paths
+% voronoi2D store well as arrays in cells. Each row in 
+% an array correspond to a corner of the path.
+
+well = {[0.5,0.2; 0.5,0.3;0.47,0.4;0.4,0.5; 0.33,0.6;0.26,0.7], ...
+        [0.5,0.3;0.53,0.4;0.58,0.5],...            
+        [0.5,0.45;0.5,0.55;0.45,0.65;0.4,0.75;0.38,0.85],...
+        [0.5,0.55;0.55,0.65;0.6,0.75;0.62,0.85]};
+
+% We now plot the wells to see how they look like
+figure(); hold on
+subplot(1,3,1)
+plotLinePath(well,'color','blue');
+axis equal tight
+axis ([0,1,0,1])
+title('well paths')
+drawnow
+%% Setting gridding parameters:
+% Before we call the gridding fuctions we set some parameters.
+gS  = 1/24;        % The grid size
+wGf = 0.25;        % The relative size of well cells compared to gS
+fGf = 0.5;         % The relative size of fault cells compared to gS
+nRs = 2;           % Number of refinement steps towards the well
+mLs = [0.1,0.05]'; % This sets the distance from a well where each 
+                   % each refinement step should start.
+
+%% Create Grid
+% We can now create the composite Pebi grid:
+Gc = compositePebiGrid(gS, [1, 1], ...
+                       'wellLines', well, 'wellGridFactor',wGf, ...
+                       'mlqtMaxLevel', nRs,'mlqtLevelSteps', mLs);
+
+%% Plot composite grid
+%And plot it
+subplot(1,3,2)
+plotGrid(Gc, 'facecolor','none')
+axis equal tight
+title('compositePebiGrid(...)')
+drawnow
+
+%% Set pebiGrid Parameters:
+% We now use the other wrapper function to create a PEBI-grid using
+% distmesh:
+eps = 1/12; % This parameter defines the refinement around the wells. The
+            % cell size are ~gS - exp(-(distance from well)/eps);
+
+%% Generate grid
+% distmesh will most likely converge in the maximum number of iterations.
+% This is usually not a problem, since the grid most likely is good before
+% the convergence requirement is met. 
+
+Gdist = pebiGrid(1/24, [1, 1], 'wellLines', well,  'wellGridFactor', 0.5^2, 'wellRefinement', true, 'epsilon',eps);
+%% Plot pebiGrid
+subplot(1,3,3)
+plotGrid(Gdist,'facecolor','none')
+axis equal tight
+title('pebiGrid(...)')
+##### SOURCE END #####
+--></body></html>
