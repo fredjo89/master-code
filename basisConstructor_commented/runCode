@@ -1,0 +1,28 @@
+#!/bin/bash
+# My first script
+
+
+custom="/home/shomeb/f/fredjoha/Desktop/master-code/checkout-mrst/mrst-bitbucket/mrst-core/examples/data/tmp/basis_custom/"
+
+spe10="/home/shomeb/f/fredjoha/Desktop/master-code/checkout-mrst/mrst-bitbucket/mrst-core/examples/data/tmp/basis_spe10/"
+
+echo "Compiling Code!"
+cd cmakedir
+make
+cd ..
+echo "Running Code!"
+
+
+mpirun -n 1 ./cmakedir/main $spe10
+mpirun -n 2 ./cmakedir/main $spe10
+#mpirun -n 3 ./cmakedir/main $spe10
+#mpirun -n 4 ./cmakedir/main $spe10
+
+#mpirun -n 1 ./cmakedir/main $custom
+#mpirun -n 2 ./cmakedir/main $custom
+#mpirun -n 3 ./cmakedir/main $custom
+#mpirun -n 4 ./cmakedir/main $custom
+
+
+
+
