@@ -1,6 +1,5 @@
-function [error, i] = RedBlack_compare(CG, A, iterations, w)
+function [error, i] = RedBlack_compare(CG, A, iterations, tol, w)
     A = A - diag(sum(A, 2));
-
     % Create interaction region 
     lens = cellfun(@numel, CG.cells.interaction);
     blocks = rldecode((1:CG.cells.num)', lens);
@@ -15,7 +14,6 @@ function [error, i] = RedBlack_compare(CG, A, iterations, w)
     M = D_inv*A;
     
     [offsets, support, celltypes] = getGridData(CG);
-
     support = support+1; 
     
     N = G.cells.num;
@@ -24,7 +22,7 @@ function [error, i] = RedBlack_compare(CG, A, iterations, w)
     temp = temp - speye(N);
     [col,row] = find(temp');
     
-    B = zeros(1,N);
+    B = zeros(N,1);
     for i = 1:length(support)
         if (celltypes(i)==2)
             B(support(i))=1; 
@@ -47,16 +45,23 @@ function [error, i] = RedBlack_compare(CG, A, iterations, w)
             end
         end 
     end
-    B = B';
     BLACK = B; 
+    
     for i = 2:CG.cells.num
         BLACK = [BLACK B];
     end
     RED = ones(N,CG.cells.num) - BLACK;
     
+    
+
+
+
+    
     error_init = full(sum(sum(abs(A*I))));
     error(1) =  1;
     
+    
+    tic
     for i = 1:iterations
         % Red cells 
         update = -M*I; 
@@ -67,12 +72,13 @@ function [error, i] = RedBlack_compare(CG, A, iterations, w)
         update = -M*I; 
         update = update.*interactionMap;
         update = update.*BLACK; 
+        
         I = I + w*update;
         I = bsxfun(@rdivide, I, sum(I, 2));
         
         error(i+1) = sum(sum(abs(A*I)))/error_init;
         
-        if abs(error(i+1)-error(i))<10^(-12)
+        if abs(error(i+1)-error(i))<tol
             X = ['TOL, RB: ', num2str(i)];
             disp(X);
             break;
@@ -83,6 +89,7 @@ function [error, i] = RedBlack_compare(CG, A, iterations, w)
         end
         
         if rem(i,1000)==0
+            toc
             disp([num2str(i),', errordiff: ',num2str(abs(error(i+1)-error(i))) ]);
         end
     end

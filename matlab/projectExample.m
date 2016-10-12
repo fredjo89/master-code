@@ -15,7 +15,8 @@ theBasis = 12;
 outerPoro = [ 0.3 0.5];
 channelPoro = [ 0.6 0.65];
 innerPoro = [0.1 0.2];
-iterations = 600; 
+iterations = 10; 
+
 
 % makeRock = 1 if we want to create new rock fields. Otherwise, it reads
 makeRock = 1; 

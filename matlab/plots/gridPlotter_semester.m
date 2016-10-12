@@ -68,12 +68,16 @@ end
 %CG = coarsenGeometry(CG); 
 %CG = storeInteractionRegionCart(CG);
 
+
+r = 1; 
+FigHandle = figure('Position', [500, 500, 1000*r, 500*r ]);
 plotCellData(G,pv,'EdgeColor', 'y')
 plotGrid(G,'FaceColor', 'none')
-outlineCoarseGrid(G,pv,'k')
+outlineCoarseGrid(G,pv,'k','linewidth',3)
 axis tight off; 
 caxis([.5 max(pv)+.5]);
 colormap(lines(max(pv)));
+
 
 %set(colorbar, 'YTick',1:max(pv));
 

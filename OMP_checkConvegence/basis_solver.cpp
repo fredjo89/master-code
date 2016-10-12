@@ -11,7 +11,7 @@
 // Chunk size for paralleization
 #define LOOPCHUNK 100
 // How often we check convergence
-#define CHECKITS 25
+#define CHECKITS 1
 // Renormalize globally every now and then due to rounding errors (only
 // applicable for large number of iterations)
 #define NORM_ITER 100
@@ -38,10 +38,10 @@ void getBasis(Grid * grid, ConnMatrix * mat, double * basis, double tol, int N, 
 	for (int i = 0; i < grid->n_basis; i++) convBasis[i] = basis[i];
 
 
-	computeBasis(grid, mat, convBasis, tol, 100, relax);
+	computeBasis(grid, mat, convBasis, tol, 2000, relax);
 
 	/* Generate basis functions */
-	computeBasis_Error(grid, mat, basis, tol, 100, relax, convBasis);
+	//computeBasis_Error(grid, mat, basis, tol, 2000, relax, convBasis);
 
 
 	auto t3 = TIME_NOW;
@@ -109,16 +109,6 @@ int computeBasis_Error(Grid * grid, ConnMatrix * mat, double * __restrict__ basi
 
 			delete[] error;
 
-
-
-
-
-
-
-
-
-
-
         // We check convergence every CHECKITS and as long as we have not converged.
 		bool check_convergence = (iter % CHECKITS) == 0 && iter > 0 && tol > 0;
 		bool done = check_convergence;
@@ -181,12 +171,13 @@ int computeBasis_Error(Grid * grid, ConnMatrix * mat, double * __restrict__ basi
 			basis[i] -= basis_update[i];
 			if (check_convergence && fabs(basis_update[i]) > tol && (*grid).celltypes[i] == 0) {
 				done = false;
+				std::cout<<iter<<"\t"<<fabs(basis_update[i])<<std::endl;
 			}
 			basis_update[i] = 0;
 		}
 		if((iter + 1) % NORM_ITER == 0 && iter > 1){
             // Algorithm can be numerically unstable due to floating point errors.
-			renormalize(grid, mat, basis);
+			//renormalize(grid, mat, basis);
 		}
 		#pragma omp barrier
 		#pragma omp parallel for

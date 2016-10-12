@@ -6,9 +6,6 @@ clc; clear all; close all;
 
 T_total = [
 819.7
-413.9
-223.3
-156.8
 78.5000
 39.29
 19.77
@@ -20,9 +17,6 @@ T_total = [
 
 T_jacobi = [
 782.6
-395.9
-213.7
-149.5
 74.8600
 37.62
 18.42
@@ -34,9 +28,6 @@ T_jacobi = [
 
 T_send = [
 0
-0.1361
-0.1197
-0.1428
 0.1683
 0.2641
 0.6817
@@ -59,9 +50,6 @@ T_n_frac = T_norm./T_total;
 
 x = [
 1
-2
-4
-8
 16
 32
 64
@@ -87,7 +75,7 @@ my_red_2 = [193 8 23] ./ 255;
 FigHandle = figure('Position', [1200, 200, 13*29, 11.5*29]);
 
 
-xt = [0 1 2 3 4 5 6 7 8 9 10 ];
+xt = [0 1 2 3 4 5 6 7  ];
 hold on; 
 plot(xt, T_j_frac,'--o','Color',my_blue_1, 'LineWidth', 1, ...
    'MarkerSize', 7, 'MarkerEdgeColor', my_blue_1, 'MarkerFaceColor', my_blue_1); 
@@ -106,8 +94,6 @@ hTxt = text(xt, yl(ones(size(xt))), str, ...   %# create text at same locations
     'HorizontalAlignment','center' ); 
 
 
-
-
 LEG1 = legend('Smoothing','Sending', 'Normalizing');
 xlabel('Number of cores');
 ylabel('Fraction');
@@ -117,13 +103,50 @@ set(gca,'ytick',[0:0.2:1]);
 set(LEG1);
 
 
+
+xt = [1:length(x)];
+
+xt = [1 2 3 4 5 6 7 8.3];
+
+newY = [ T_s_frac T_n_frac T_j_frac   ]
+
+FigHandle = figure('Position', [1200, 200, 80*length(x), 400]);
+bar(newY,'stacked');  %# Create a stacked histogram
+set(gca, 'XTickLabel',[])                    
+set(gca, 'XTick', x)
+set(gca,'ytick',[0:0.2:1]);
+xlabel('Number of cores');
+ylabel('Fraction');
+LEG1 = legend('Sending','Normalizing', 'Smoothing');
+LEG1 = legend('Message-passing','Normalizing', 'Smoothing');
+colormap([my_red_1; my_blue_1; my_green_1])
+set(gca,'fontsize',17)
+
+
+set(gca, 'XTickLabel',[])                    
+%xt = get(gca, 'XTick');
+set(gca, 'XTick', xt, 'XTickLabel', x)
+set(gca,'ytick',[0:0.2:2]);
+
+
+
+set(gca,'XLim',[0 9],'YLim',[0 1])
+
+
+
+
+
+
+
+
+
 %{
 set(gcf,'Units','inches');
 screenposition = get(gcf,'Position');
 set(gcf,...
     'PaperPosition',[0 0 screenposition(3:4)],...
     'PaperSize',[screenposition(3:4)]);
-print -dpdf -painters epsFig
+print -dpdf -painters epsFig_large
 %}
 
 

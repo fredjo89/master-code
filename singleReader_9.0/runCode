@@ -23,11 +23,17 @@ echo "Running Code!"
 
 #mpirun -n 1  ./cmakedir/main $spe10
 #mpirun -n 3 ./cmakedir/main $custom
-mpirun -n 4 ./cmakedir/main $spe10
+#mpirun -n 4 ./cmakedir/main $spe10
 
+#mpirun -n 1 ./cmakedir/main $spe10
+#mpirun -n 2 ./cmakedir/main $spe10
+#mpirun -n 3 ./cmakedir/main $spe10
+#mpirun -n 4 ./cmakedir/main $spe10
 
-
-
+#mpirun -n 1 ./cmakedir/main $custom
+mpirun -n 2 ./cmakedir/main $custom
+#mpirun -n 3 ./cmakedir/main $custom
+#mpirun -n 4 ./cmakedir/main $custom
 
 
 

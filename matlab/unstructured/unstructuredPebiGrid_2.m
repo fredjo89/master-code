@@ -7,9 +7,9 @@ pdim = 1000;
 % zdim is the vertical size of the grid
 zdim = 300;
 % Number of cells in x/y direction
-n_xy = 20;
+n_xy = 4*5;
 % Number of layers
-n_z = 5;
+n_z = 4;
 % Compute desired cell size
 resGridSize = pdim./n_xy;
 
@@ -39,7 +39,7 @@ figure;
 plotCellData(G, log10(rock.perm))
 view(-40, 50)
 %% First option: Use METIS
-n_c = 25;
+n_c = 5;
 T = computeTrans(G, rock);
 mrstModule add coarsegrid incomp
 
@@ -47,10 +47,8 @@ mrstModule add coarsegrid incomp
 % if METIS is found under /usr/bin
 global METISPATH
 METISPATH = '/usr/local/bin/';
-p = partitionMETIS(G, T, n_c);
-
-figure; plotCellData(G, p)
-view(-40, 50)
+%p = partitionMETIS(G, T, n_c);
+p = ones(G.cells.num,1);
 
 
 % My code
@@ -65,6 +63,53 @@ fn = fullfile(mrstDataDirectory(), 'tmp', ['basis_', 'unstructured']);
 %fn = fullfile('/global/work/fredjoha/mrst_data', ['basis_', lower(testcase)]);
 
 
+temp = zeros(CG.cells.num, 1); 
+newP = zeros(G.cells.num, 1); 
+for i = 1:CG.cells.num
+    temp(i) = randi([1 CG.cells.num],1,1);
+end
+
+
+for (i = 1:G.cells.num)
+   newP(i) = temp(p(i));
+end
+
+%{
+FigHandle = figure('Position', [1200, 200, 800, 800]);
+plotCellData(G,p,'EdgeColor', 'k','EdgeAlpha', 0.1)
+view(-40, 50)
+outlineCoarseGrid(G,p,'linewidth',2)
+axis tight off; 
+%}
+
+%{
+FigHandle = figure('Position', [1200, 200, 800, 800/(1.5)]);
+plotCellData(G,newP,'EdgeColor', 'k','EdgeAlpha', 0.1)
+view(-40, 55)
+outlineCoarseGrid(G,p,'linewidth',2)
+axis tight off; 
+%}
+
+
+%{
+figure();
+%view(-15,40);
+%plotGrid(G,'FaceColor','none','EdgeAlpha',0.1);
+plotCellData(G,boundary, find(boundary>0.1), ...
+             'EdgeColor','k','EdgeAlpha',0.1);
+colormap(colorMatrix)
+colormap(1,1) = 1
+%}
+
+%print -dpng 3D_example_125
+
+
+
+
+
+
+
+
 
 %cppMultiscaleBasis(CG, A, 'doSolve', false, 'writePath', fn);
 newWrite2(CG, A, 'writePath', fn);
@@ -72,7 +117,6 @@ newWrite2(CG, A, 'writePath', fn);
 
 disp('Stored files:')
 ls(fullfile(fn, 'input'))
-
 
 
 

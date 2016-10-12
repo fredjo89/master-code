@@ -1,7 +1,7 @@
 function [ G, rock, p, testcase ] = makeProblem()
 % setup case
 
-testcase = 'spe10';
+testcase = 'custom';
 
 switch lower(testcase)
     case 'custom'

@@ -311,7 +311,7 @@ void jacobi(Grid& grid, Matrix& mat, Options& opt){
         opt.counter = 0;
         opt.underTol = true;
         for (int i=0; i<grid.n_sup; i++){
-            if ( opt.underTol && !grid.boundary[i] && opt.tolerance < abs(grid.updates[i]) ){
+            if ( opt.underTol && !grid.boundary[i] && opt.tolerance < abs(opt.omega*grid.updates[i]) ){
                 opt.underTol = false;
             }
             grid.basis[i]-=opt.omega*grid.updates[i];

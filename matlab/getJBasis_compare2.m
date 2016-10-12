@@ -1,4 +1,4 @@
-function [error] = getJBasis_compare2(CG, A, iterations, w)
+function [error] = getJBasis_compare2(CG, A, iterations, tol, w)
 
     % Ensuring that the rows of A sum to zero
     A = A - diag(sum(A, 2));
@@ -26,6 +26,7 @@ function [error] = getJBasis_compare2(CG, A, iterations, w)
     error_init = full(sum(sum(abs(A*I))));
     error(1) =  1;
     
+    tic
     for  i =1:iterations
         update = -M*I;
         update = update.*interactionMap;
@@ -34,7 +35,7 @@ function [error] = getJBasis_compare2(CG, A, iterations, w)
         
         error(i+1) = sum(sum(abs(A*I)))/error_init;
         
-        if abs(error(i+1)-error(i))<10^(-12)
+        if abs(error(i+1)-error(i))<tol
             X = ['TOL, Jacobi: ', num2str(i)];
             disp(X);
             break;
@@ -44,6 +45,7 @@ function [error] = getJBasis_compare2(CG, A, iterations, w)
             break;
         end
         if rem(i,1000)==0
+            toc
             disp([num2str(i),', errordiff: ',num2str(abs(error(i+1)-error(i))) ]);
         end
         

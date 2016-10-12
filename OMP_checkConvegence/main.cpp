@@ -54,7 +54,7 @@ int flatFileBasis(std::string fn) {
 	mat.loc_conn = new double[grid.n_basis*mat.n_conn]();
 
 
-	getBasis(&grid, &mat, basis, -1, 100, (double) 2/3) ;
+	getBasis(&grid, &mat, basis, 0.0001, 100, (double) 2/3) ;
 	// Write output
 	writeBasisOperator(&grid, outfile, basis);
 

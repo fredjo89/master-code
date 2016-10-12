@@ -36,8 +36,6 @@ for i=1:nx*ny
 end
 
 
-
-
 fileID = fopen('basisDistr.txt');
 C = textscan(fileID,'%f');
 fileData = C{1}; 
@@ -50,26 +48,69 @@ for i = 1:nx*ny
 end
 
 
-colorMatrix = [ 1 1 1; .35 .35 .35; 1 .3 0; 0 .3 1; 0 0.75 0];
-%FigHandle = figure('Position', [100, 400, 1200, 1200]);
-figure();
+%% New stff
+CG = setupMexInteractionMapping(CG);
+[offsets, support, celltypes] = getGridData(CG);
+offsets = offsets + 1; 
+support = support +1; 
+
+
+
+basis = zeros(nx*ny, 1);
+
+Y = 9; 
+
+for (i = offsets(Y): offsets(Y+1)-1)
+    if (celltypes(i)~=1)
+        basis(support(i)) = 1;  
+    end
+end
+
+for i=1:nx*ny
+     if any(abs(CG.cells.centers-i)<1e-10)
+        basis(i) = 4; 
+     end
+end
+
+
+
+my_green_1 = [93 148 111] ./ 255;
+my_green_2 = [87 160 37] ./ 255;
+my_blue_1 = [61 97 209] ./ 255;
+my_blue_2 = [89 89 224] ./ 255;
+my_red_1 = [223 95 88] ./ 255;
+my_red_2 = [193 8 23] ./ 255;
+my_red_3 = [241 36 35] ./ 255;
+
+
+colorMatrix = [ 1 1 1; .35 .35 .35; my_red_3; 0 .3 1; my_green_2];
+FigHandle = figure('Position', [100, 400, 1200, 500]);
 hold on; 
 plotCellData(G,basis,'EdgeColor', 'y')
 plotGrid(G,'FaceColor', 'none')
-%outlineCoarseGrid(G,pv,'k', 'lineWidth', 4)
-outlineCoarseGrid(G,pv,'k')
-axis equal tight off; 
+outlineCoarseGrid(G,pv,'k', 'lineWidth', 4)
+%outlineCoarseGrid(G,pv,'k', 'linewidth',2)
+%axis equal tight off; 
+axis equal tight off;
 %caxis([0 max(pv)]);
 colormap(colorMatrix)
 %colormap(1,1) = 1
 
+
+
+
+% I = imread('yolo1.fig');
+% [I2, rect] = imcrop(I);
+
+
+%{
 set(gcf,'Units','inches');
 screenposition = get(gcf,'Position');
 set(gcf,...
     'PaperPosition',[0 0 screenposition(3:4)],...
     'PaperSize',[screenposition(3:4)]);
-print -dpdf -painters gridBoundary_partition
-
+print -dpdf -painters fiG_3
+%}
 
 %{
 %FigHandle = figure('Position', [1300, 400, 1200, 1200]);

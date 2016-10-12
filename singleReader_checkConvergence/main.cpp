@@ -27,9 +27,9 @@ int main(int argc, char* argv[])
 	double start1, start2, start3;
 	double t0 = 0, t1 = 0, t2 = 0, t3 = 0, t4 = 0, t5 = 0, t6 = 0, t7 = 0, t8 = 0;
 	Options opt;
-	opt.maxIter = 100;
+	opt.maxIter = 2000;
 	opt.tolerance = -1;
-	opt.checkTol = 5;
+	opt.checkTol = 1;
 	Grid g_grid, l_grid;
 	Matrix g_mat, l_mat;
 	Graph graph;
@@ -39,8 +39,8 @@ int main(int argc, char* argv[])
 
 	Options opt2;
 	opt2.maxIter = 20000;
-	opt2.tolerance = -1;
-	opt2.checkTol = 5;
+	opt2.tolerance = 0.0001;
+	opt2.checkTol = 1;
 
 
 	if (RANK==0 ){

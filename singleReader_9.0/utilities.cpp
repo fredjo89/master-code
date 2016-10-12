@@ -376,9 +376,6 @@ void writeBasis(Grid& g_grid){
         outfile<<basis[i]<<" ";
     }
     outfile.close();
-
-
-
 }
 
 

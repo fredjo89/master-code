@@ -80,8 +80,6 @@ hTxt = text(xt, yl(ones(size(xt))), str, ...   %# create text at same locations
     'HorizontalAlignment','center' ); 
 
 
-
-
 LEG1 = legend('Smoothing','Sending', 'Normalizing');
 xlabel('Number of cores');
 ylabel('Fraction');
@@ -91,13 +89,40 @@ set(gca,'ytick',[0:0.2:1]);
 set(LEG1);
 
 
-
+%{
 set(gcf,'Units','inches');
 screenposition = get(gcf,'Position');
 set(gcf,...
     'PaperPosition',[0 0 screenposition(3:4)],...
     'PaperSize',[screenposition(3:4)]);
-print -dpdf -painters epsFig
+print -dpdf -painters epsFig4
+%}
+
+
+
+
+
+
+
+newY = [ T_s_frac T_n_frac T_j_frac   ]
+
+FigHandle = figure('Position', [1200, 200, 80*length(x), 400]);
+bar(newY,'stacked');  %# Create a stacked histogram
+set(gca, 'XTickLabel',[])                    
+xt = get(gca, 'XTick');
+set(gca, 'XTick', xt, 'XTickLabel', x)
+set(gca,'ytick',[0:0.2:1]);
+set(LEG1);
+xlabel('Number of cores');
+ylabel('Ratio');
+LEG1 = legend('Sending','Normalizing', 'Smoothing');
+colormap([my_red_1; my_blue_1; my_green_1])
+set(gca,'fontsize',15)
+
+
+
+
+
 
 
 

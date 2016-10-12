@@ -1,7 +1,7 @@
 clc; clear all; close all; 
 
 tic
-fileID = fopen('MPI_converged.txt');
+fileID = fopen('MPI_basis.txt');
 C = textscan(fileID,'%f');
 
 MPI_basis = C{1}; 
@@ -41,6 +41,8 @@ for i = 1 : CG.cells.num
             k = k+1; 
         end
     end
+    
+
 end
 toc
 
@@ -48,7 +50,11 @@ toc
 a = sum(sum(abs(A*I)));
 b = sum(sum(abs(A*I_0)));
 
-a/b;
+format long
+
+a/b
+
+%{
 
 figure();
 plotCellData(G,I(:,1));
@@ -64,6 +70,6 @@ temp = abs(sum(I')-1);
 
 max(temp)
 
-
+%}
 
 

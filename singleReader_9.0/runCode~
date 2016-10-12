@@ -20,52 +20,25 @@ cd ..
 echo "Running Code!"
 
 
-#valgrind ./cmakedir/main $custom
-#valgrind mpirun -n 4  ./cmakedir/main $custom
-#valgrind --leak-check=yes ./cmakedir/main $custom 
-
-
-
-#valgrind --leak-check=yes mpirun -n 2 ./cmakedir/main $custom
 
 #mpirun -n 1  ./cmakedir/main $spe10
+#mpirun -n 3 ./cmakedir/main $custom
+#mpirun -n 4 ./cmakedir/main $spe10
+
+#mpirun -n 1 ./cmakedir/main $spe10
 #mpirun -n 2 ./cmakedir/main $spe10
 #mpirun -n 3 ./cmakedir/main $spe10
 #mpirun -n 4 ./cmakedir/main $spe10
 
-
 #mpirun -n 1 ./cmakedir/main $custom
-#mpirun -n 2 ./cmakedir/main $custom
+mpirun -n 2 ./cmakedir/main $custom
 #mpirun -n 3 ./cmakedir/main $custom
-mpirun -n 1 ./cmakedir/main $spe10
-
-
-
-
-#mpirun -hostfile my_hostfile ./cmakedir/main $custom
-
-
-
-#mpirun -n 20 ./main $custom
-
-#mpirun -n 1 ./main $spe10
-#mpirun -n 2 ./main $spe10
-#mpirun -n 3 ./main $spe10
-#mpirun -n 4 ./cmakedir/main $spe10
+#mpirun -n 4 ./cmakedir/main $custom
 
 
 
 
 
-
-
-#mpirun -hostfile my_hostfile  ./main $FN
-#mpirun -n 5 ./main $FN
-#mpirun -n 6 ./main $FN
-#mpirun -n 7 ./main $FN
-#mpirun -n 8 ./main $FN
-#mpirun -n 9 ./main $FN
-#mpirun -n 10 ./main $FN
 
 
 
